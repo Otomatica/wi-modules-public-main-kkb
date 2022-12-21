@@ -1,0 +1,217 @@
+<ma-get-point-value ng-repeat="(key, value) in points" point="value"></ma-get-point-value>
+
+<md-card flex="">
+    <div layout="column">
+        <md-toolbar class="md-hue-3">
+            <div class="md-toolbar-tools" ng-bind="'Ekipman Gorunum'"></div>
+        </md-toolbar>
+        <md-card-content>
+            <wi-svg ng-include="$ctrl.diagram">
+            
+        <div ma-selector="#Text_fanstatus text tspan" ng-bind="points.fanstatus.renderedValue"
+            ng-style="{'fill' : points.fanstatus.value ? 'green' : 'gray'}"></div>
+        <div ma-selector="#Text_fancommand text tspan" ng-bind="points.fancommand.renderedValue"></div>
+        <div ma-selector="#Text_fanotoman text tspan" ng-bind="points.fanotoman.renderedValue"></div>
+        <div ma-selector="#Text_fantermalarm text tspan" ng-bind="points.fantermalarm.renderedValue"></div>
+
+        <div ma-selector="#Text_heaterstatus text tspan" ng-bind="points.heaterstatus.renderedValue"></div>
+        <div ma-selector="#Text_heaterfault text tspan" ng-bind="points.heaterfault.renderedValue"></div>
+        <div ma-selector="#Text_heatertermalarm text tspan" ng-bind="points.heatertermalarm.renderedValue"></div>
+
+        <div ma-selector="#Text_spairtemp text tspan" ng-bind="points.spairtemp.renderedValue"></div>
+            
+            </wi-svg>
+        </md-card-content>
+    </div>
+</md-card>
+
+<md-card>
+    <md-toolbar class="md-hue-3">
+        <div layout="row" layout-align="start start">
+            <div class="md-toolbar-tools" ng-bind="'Set Noktaları'"></div>
+            <div>
+                <button class="md-icon-button md-button" ng-click="test=!test" type="button" 
+                		ng-show="points.fancommand">
+                    <md-icon class="material-icons" role="img" aria-hidden="true">edit</md-icon>
+                </button>
+            </div>
+        </div>
+        
+    </md-toolbar>
+    <div layout="row" layout-align="space-between center">
+        <md-card flex="">
+            <div layout="column" layout-align="space-between start">
+                <md-card-content>
+                    <div layout="column" layout-align="space-between start">
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.fancommand" ng-show="!test"></ma-point-value>
+                            <ma-set-point-value label="NAME" point="points.fancommand" ng-show="test"></ma-set-point-value>
+                        </div>
+                    </div>
+                </md-card-content>
+            </div>
+        </md-card>
+    </div>
+</md-card>
+
+<style>
+    #Bar_supplyfanspeed,
+    #Bar_outfanspeed,
+    #Bar_comp1 {
+        transform-box: fill-box;
+        transform-origin: center;
+        stroke-dasharray: 220;
+        transform: rotate(-90deg);
+        transition: stroke-dashoffset linear 0.3s;
+    }
+
+    #Bar_comp2 {
+        transform-box: fill-box;
+        transform-origin: center;
+        stroke-dasharray: 220;
+        transform: rotate(-90deg);
+        transition: stroke-dashoffset linear 1s;
+    }
+
+    #supplyfanspeed circle:nth-child(3),
+    #outfanspeed circle:nth-child(3),
+    #cwvalvepos circle:nth-child(3) {
+        stroke-width: 2px;
+        opacity: 0.7;
+    }
+
+    .table-value {
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+    /*#returnairarrow {*/
+    /*    animation: moveUp 2s linear 0s infinite;*/
+    /*}*/
+    /*#supplyairarrow {*/
+    /*    animation: moveDown 2s linear 2s infinite;*/
+    /*}*/
+    /*#exhairarrow {*/
+    /*    animation: moveRight 2s linear 2s infinite;*/
+    /*}*/
+    /*#outairarrow {*/
+    /*    animation: moveRight 2s linear 0s infinite;*/
+    /*}*/
+
+    @keyframes moveUp {
+        0% {
+            transform: translate(0, 8);
+            opacity: 0;
+        }
+
+        30% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate(0, -40px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes moveDown {
+        0% {
+            transform: translate(0, -8);
+            opacity: 0;
+        }
+
+        30% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate(0, 40px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes moveRight {
+        0% {
+            transform: translate(-8, 0);
+            opacity: 0;
+        }
+
+        30% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate(40px, -5px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes moveLeft {
+        0% {
+            transform: translate(8, 0);
+            opacity: 0;
+        }
+
+        30% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate(-40px, -5px);
+            opacity: 0;
+        }
+    }
+
+    .flash-on-change {
+        animation: flashonchange 5s linear 5s infinite;
+    }
+
+    #Switch_unitswstatus {
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: all ease 1s;
+    }
+
+    #Switch_unitswstatus.rotate-left {
+        transform: translate(4px, 0) rotate(-110deg);
+    }
+
+    #Switch_unitswstatus.rotate-center {
+        transform: translate(6px, 0) rotate(-60deg);
+    }
+
+    @keyframes flashonchange {
+        0% {
+            fill: rgb(0, 0, 0)
+        }
+
+        30% {
+            fill: rgb(0, 0, 0)
+        }
+
+        40% {
+            fill: rgb(208, 106, 73)
+        }
+
+        60% {
+            fill: rgb(208, 106, 73)
+        }
+
+        70% {
+            fill: rgb(0, 0, 0)
+        }
+
+        100% {
+            fill: rgb(0, 0, 0)
+        }
+    }
+
+    text[id],
+    g[id]:not(.svg-pan-zoom_viewport) text {
+        text-anchor: middle;
+    }
+</style>

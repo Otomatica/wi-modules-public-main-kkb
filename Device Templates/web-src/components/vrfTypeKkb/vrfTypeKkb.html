@@ -1,0 +1,589 @@
+<ma-get-point-value ng-repeat="(key, value) in points" point="value"></ma-get-point-value>
+
+<div layout="column">
+    <div layout="row">
+        <md-card flex="">
+            <div layout="column">
+                <md-toolbar class="md-hue-3">
+                    <div layout="row" layout-align="start start">
+                        <div class="md-toolbar-tools" ng-bind="'Cihaz Calisma Durumu'"></div>
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+                	<div layout="column" layout-align="start start">
+	                	<div flex="" ng-show="points.onoff">
+	                        <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+	                            point="points.onoff" />
+	                        </ma-point-value>
+	                    </div>
+	                    <div flex="">
+	                        <md-button ng-click="points.onoff.setValue(true)" class="md-raised"
+	                            ng-class="points.onoff.value == true ? 'success-button' : ''"
+	                            ng-disabled="points.onoff.value == true">
+	                            <md-icon class="material-icons" style="margin-right: 5px" role="img" aria-hidden="true">
+	                                power_settings_new</md-icon>{{points.onoff.value == true ? "Acik" : "Ac"}}
+	                        </md-button>
+	                        <md-button ng-click="points.onoff.setValue(false)" class="md-raised"
+	                            ng-class="points.onoff.value == false ? 'muted-button' : ''"
+	                            ng-disabled="points.onoff.value == false">
+	                            <md-icon class="material-icons" style="margin-right: 5px" role="img" aria-hidden="true">
+	                                power_off</md-icon>{{points.onoff.value == false ? "Kapali" :
+	                            "Kapat"}}
+	                        </md-button>
+	                    </div>
+                    </div>
+                </md-card-content>
+            </div>
+        </md-card>
+        <md-card flex="">
+            <div layout="column">
+                <md-toolbar class="md-hue-3">
+                    <div layout="row" layout-align="start start">
+                        <div class="md-toolbar-tools" ng-bind="'Mahal Durumu'"></div>
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+                    <div layout="column" layout-align="start start">
+
+                        <div flex="" ng-show="points.ambtemp">
+                            <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                point="points.ambtemp" />
+                            </ma-point-value>
+                        </div>
+
+                        <div flex="" ng-show="points.funcmode">
+                            <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                point="points.funcmode" />
+                            </ma-point-value>
+                        </div>
+
+                    </div>
+                </md-card-content>
+            </div>
+        </md-card>
+    </div>
+</div>
+
+<div layout="column">
+    <div layout="row">
+        <md-card flex="">
+            <div layout="column">
+                <md-toolbar class="md-hue-3">
+                    <div layout="row" layout-align="start start">
+                        <div class="md-toolbar-tools" ng-bind="'Cihaz Modlari'"></div>
+                        <div>
+                            <md-button class="md-icon-button md-primary" ng-click="test=true" ng-show="!test" aria-label="Setleme">
+								<md-icon class="material-icons" role="img" aria-hidden="true">edit</md-icon>
+							</md-button>
+							<md-button class="md-icon-button md-warn" ng-click="test=false" ng-show="test" aria-label="Setleme">
+								<md-icon class="material-icons" role="img" aria-hidden="true">edit_off</md-icon>
+							</md-button>
+                        </div>
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+                    <md-tabs class="" md-dynamic-height md-border-bottom md-center-tabs>
+                        <md-tab id="tab1" md-active="points.funcmode.value == 0" class="test">
+                            <md-tab-label>
+                                <md-icon style="margin-right: 10px">ac_unit</md-icon>SOGUTMA
+                            </md-tab-label>
+                            <md-tab-body>
+                                <div layout="column" layout-align="space-between start">
+                                    <ma-point-value label="NAME" point="points.cooldryset" ng-show="!test">
+                                    </ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.cooldryset" ng-show="test">
+                                    </ma-set-point-value>
+                                </div>
+
+                                <md-button ng-click="points.funcmode.setValue(0)" class="md-raised"
+                                    ng-class="points.funcmode.value == 0 ? 'success-button' : ''"
+                                    ng-disabled="points.funcmode.value == 0">
+                                    {{ points.funcmode.value == 0 ? "Mod Etkin" : "Modu Etkinlestir"}}
+                                </md-button>
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab id="tab2" md-active="points.funcmode.value == 1">
+                            <md-tab-label>
+                                <md-icon style="margin-right: 10px">waves</md-icon>KURUTMA
+                            </md-tab-label>
+                            <md-tab-body>
+                                <div layout="column" layout-align="space-between start">
+                                    <ma-point-value label="NAME" point="points.cooldryset" ng-show="!test">
+                                    </ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.cooldryset" ng-show="test">
+                                    </ma-set-point-value>
+                                </div>
+
+                                <md-button ng-click="points.funcmode.setValue(1)" class="md-raised"
+                                    ng-class="points.funcmode.value == 1 ? 'success-button' : ''"
+                                    ng-disabled="points.funcmode.value == 1">{{points.funcmode.value == 1 ?
+                                    "Mod
+                                    Etkin" : "Modu Etkinlestir"}}
+                                </md-button>
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab id="tab3" md-active="points.funcmode.value == 2">
+                            <md-tab-label>
+                                <md-icon style="margin-right: 10px">toys_fan</md-icon>FAN
+                            </md-tab-label>
+                            <md-tab-body>
+                                <md-button ng-click="points.funcmode.setValue(2)" class="md-raised"
+                                    ng-class="points.funcmode.value == 2 ? 'success-button' : ''"
+                                    ng-disabled="points.funcmode.value == 2">
+                                    {{points.funcmode.value == 2 ? "Mod Etkin" : "Modu Etkinlestir"}}
+                                </md-button>
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab id="tab4" md-active="points.funcmode.value == 3">
+                            <md-tab-label>
+                                <md-icon style="margin-right: 10px">wb_sunny</md-icon>ISITMA
+                            </md-tab-label>
+                            <md-tab-body>
+                                <div layout="column" layout-align="space-between start">
+                                    <ma-point-value label="NAME" point="points.heattempset" ng-show="!test">
+                                    </ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.heattempset" ng-show="test">
+                                    </ma-set-point-value>
+                                </div>
+
+                                <md-button ng-click="points.funcmode.setValue(3)" class="md-raised"
+                                    ng-class="points.funcmode.value == 3 ? 'success-button' : ''"
+                                    ng-disabled="points.funcmode.value == 3">
+                                    {{points.funcmode.value == 3 ? "Mod Etkin" : "Modu Etkinlestir"}}
+                                </md-button>
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab id="tab5" md-active="points.funcmode.value == 4">
+                            <md-tab-label>
+                                <md-icon style="margin-right: 10px">autorenew</md-icon>OTO
+                            </md-tab-label>
+                            <md-tab-body>
+                                <div layout="column" layout-align="space-between start">
+                                    <ma-point-value label="NAME" point="points.cooldryset" ng-show="!test">
+                                    </ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.cooldryset" ng-show="test">
+                                    </ma-set-point-value>
+                                </div>
+
+                                <div layout="column" layout-align="space-between start">
+                                    <ma-point-value label="NAME" point="points.heattempset" ng-show="!test">
+                                    </ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.heattempset" ng-show="test">
+                                    </ma-set-point-value>
+                                </div>
+
+                                <md-button ng-click="points.funcmode.setValue(4)" class="md-raised"
+                                    ng-class="points.funcmode.value == 4 ? 'success-button' : ''"
+                                    ng-disabled="points.funcmode.value == 4">
+                                    {{points.funcmode.value == 4 ? "Mod Etkin" : "Modu Etkinlestir"}}
+                                </md-button>
+                            </md-tab-body>
+                        </md-tab>
+                    </md-tabs>
+                </md-card-content>
+            </div>
+        </md-card>
+        <md-card flex="">
+            <div layout="column">
+                <md-toolbar class="md-hue-3">
+                    <div class="md-toolbar-tools" ng-bind="'Fan Hizi ve Ufleme Yonu'"></div>
+                </md-toolbar>
+                <md-card-content ng-class="points.onoff.value ? 'device-on' : 'device-off'">
+                    <div flex="">
+                        <div layout="row">
+                            <div layout="column" ng-if="points.airoutletdirec"
+                                style="width: 45%; margin-right: 5%; position: relative;">
+                                <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                    point="points.airoutletdirec" style="margin-bottom: 15px" />
+                                </ma-point-value>
+                                <ma-svg ng-include="$ctrl.diagramAir">
+                                    <div ma-selector="#Direction_1"
+                                        ng-class="points.airoutletdirec.value == 0 ? 'active-bar' : points.airoutletdirec.value == 4 ? 'active-swing my-button' : 'my-button'"
+                                        ng-click="points.airoutletdirec.setValue(0)" wi-svg-tooltip="'YATAY'"></div>
+                                    <div ma-selector="#Direction_2"
+                                        ng-class="points.airoutletdirec.value == 1 ? 'active-bar' : points.airoutletdirec.value == 4 ? 'active-swing my-button' : 'my-button'"
+                                        ng-click="points.airoutletdirec.setValue(1)" wi-svg-tooltip="'ORTA-1'"></div>
+                                    <div ma-selector="#Direction_3"
+                                        ng-class="points.airoutletdirec.value == 2 ? 'active-bar' : points.airoutletdirec.value == 4 ? 'active-swing my-button' : 'my-button'"
+                                        ng-click="points.airoutletdirec.setValue(2)" wi-svg-tooltip="'ORTA-2'"></div>
+                                    <div ma-selector="#Direction_4"
+                                        ng-class="points.airoutletdirec.value == 3 ? 'active-bar' : points.airoutletdirec.value == 4 ? 'active-swing my-button' : 'my-button'"
+                                        ng-click="points.airoutletdirec.setValue(3)" wi-svg-tooltip="'DIKEY'"></div>
+                                    <div ma-selector="#Direction_auto"
+                                        ng-class="points.airoutletdirec.value == 5 ? 'active-bar' : 'my-button'"
+                                        ng-click="points.airoutletdirec.setValue(5)" wi-svg-tooltip="'OTO'"></div>
+
+                                </ma-svg>
+                                <div class="svg-button">
+                                    <md-button style="display:block" ng-click="points.airoutletdirec.setValue(4)"
+                                        class="md-raised"
+                                        ng-class="points.airoutletdirec.value == 4 ? 'success-button' : ''"
+                                        ng-disabled="points.airoutletdirec.value == 4">Swing</md-button>
+                                    <!--<md-button style="display:block" ng-click="points.funcmode.setValue(4)" class="md-raised"-->
+                                    <!--        ng-class="points.funcmode.value == 4 ? 'success-button' : ''"-->
+                                    <!--        ng-disabled="points.funcmode.value == 4">OTO</md-button>-->
+                                </div>
+                            </div>
+
+                            <div layout="column" style="width: 45%; position: relative;">
+                                <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                    point="points.acfanspeed" style="margin-bottom: 15px" />
+                                </ma-point-value>
+                                <ma-svg ng-include="$ctrl.diagramFan">
+                                    <div ma-selector="#Speed_1"
+                                        ng-class="points.acfanspeed.value == 0 ? 'active-bar' : points.acfanspeed.value <= 3 ? 'active-bar my-button' : 'my-button'"
+                                        ng-click="points.acfanspeed.setValue(0)" wi-svg-tooltip="'DUSUK'"></div>
+                                    <div ma-selector="#Speed_2"
+                                        ng-class="points.acfanspeed.value == 1 ? 'active-bar' : (points.acfanspeed.value == 2 || points.acfanspeed.value == 3) ? 'active-bar my-button' : 'my-button'"
+                                        ng-click="points.acfanspeed.setValue(1)" wi-svg-tooltip="'ORTA-DUSUK'"></div>
+                                    <div ma-selector="#Speed_3"
+                                        ng-class="points.acfanspeed.value == 2 ? 'active-bar' : points.acfanspeed.value == 3 ? 'active-bar my-button' : 'my-button'"
+                                        ng-click="points.acfanspeed.setValue(2)" wi-svg-tooltip="'ORTA-YUKSEK'"></div>
+                                    <div ma-selector="#Speed_4"
+                                        ng-class="points.acfanspeed.value == 3 ? 'active-bar' : 'my-button'"
+                                        ng-click="points.acfanspeed.setValue(3)" wi-svg-tooltip="'YUKSEK'"></div>
+                                    <div ma-selector="#Speed_auto"
+                                        ng-class="points.acfanspeed.value == 4 ? 'active-bar' : 'my-button'"
+                                        ng-click="points.acfanspeed.setValue(4)" wi-svg-tooltip="'OTO'"></div>
+                                </ma-svg>
+                                <!--<div class="svg-button">-->
+                                <!--    <md-button style="display:block" ng-click="points.funcmode.setValue(4)" class="md-raised"-->
+                                <!--            ng-class="points.funcmode.value == 4 ? 'success-button' : ''"-->
+                                <!--            ng-disabled="points.funcmode.value == 4">OTO</md-button>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+
+                </md-card-content>
+        </md-card>
+    </div>
+</div>
+
+<div layout="column">
+    <div layout="row">
+        <md-card flex="" class="lock-card">
+            <div layout="column">
+                <md-toolbar class="md-hue-3">
+                    <div layout="row" layout-align="start start">
+                        <div class="md-toolbar-tools" ng-bind="'Mahal Panel Kilitleme Ayarlari'"></div>
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+                    <div layout="column" layout-align="start start">
+                        <div flex="">
+                            <div class="button-container">
+                                <label>Kilitleme Ozelligi:</label>
+                                <md-button ng-click="points.generallock.setValue(1)" class="md-raised"
+                                    ng-class="points.generallock.value == 1 ? 'success-button' : ''"
+                                    ng-disabled="points.generallock.value == 1">
+                                    <md-icon class="material-icons" style="margin-right: 5px" role="img"
+                                        aria-hidden="true">lock_open</md-icon>{{points.generallock.value == 0 ?
+                                    "AC" : "ACIK"}}
+                                </md-button>
+                                <md-button ng-click="points.generallock.setValue(0)" class="md-raised"
+                                    ng-disabled="points.generallock.value == 0">
+                                    <md-icon class="material-icons" style="margin-right: 5px" role="img"
+                                        aria-hidden="true">no_encryption</md-icon>{{points.generallock.value == 1
+                                    ? "KAPAT" :
+                                    "KAPALI"}}
+                                </md-button>
+                            </div>
+
+                            <div class="button-container" ng-show="points.generallock.value">
+                                <label>On/Off Kilitleme:</label>
+                                <md-button ng-click="points.onofflock.setValue(0)" class="md-raised"
+                                    ng-class="points.onofflock.value == 0 ? 'success-button' : ''"
+                                    ng-disabled="points.onofflock.value == 0">
+                                    <md-icon class="material-icons" style="margin-right: 5px" role="img"
+                                        aria-hidden="true">lock_open</md-icon>{{points.onofflock.value == 0 ?
+                                    "YETKILI" : "YETKI VER"}}
+                                </md-button>
+                                <md-button ng-click="points.onofflock.setValue(1)" class="md-raised"
+                                    ng-disabled="points.onofflock.value == 1"
+                                    ng-class="points.onofflock.value == 1 ? 'danger-button' : ''">
+                                    <md-icon class="material-icons" style="margin-right: 5px" role="img"
+                                        aria-hidden="true">lock</md-icon>{{points.onofflock.value == 1 ?
+                                    "KILITLI" :
+                                    "KILITLE"}}
+                                </md-button>
+                            </div>
+
+                            <div class="button-container" ng-show="points.generallock.value">
+                                <label>Mod Kilitleme:</label>
+                                <md-button ng-click="points.modelock.setValue(0)" class="md-raised"
+                                    ng-class="points.modelock.value == 0 ? 'success-button' : ''"
+                                    ng-disabled="points.modelock.value == 0">
+                                    <md-icon class="material-icons" style="margin-right: 5px" role="img"
+                                        aria-hidden="true">lock_open</md-icon>{{points.modelock.value == 0 ?
+                                    "YETKILI" : "YETKI VER"}}
+                                </md-button>
+                                <md-button ng-click="points.modelock.setValue(1)" class="md-raised"
+                                    ng-disabled="points.modelock.value == 1"
+                                    ng-class="points.modelock.value == 1 ? 'danger-button' : ''">
+                                    <md-icon class="material-icons" style="margin-right: 5px" role="img"
+                                        aria-hidden="true">lock</md-icon>{{points.modelock.value == 1 ? "KILITLI"
+                                    :
+                                    "KILITLE"}}
+                                </md-button>
+                            </div>
+
+                            <div class="button-container" ng-show="points.generallock.value">
+                                <label>Sicaklik Kilitleme:</label>
+                                <md-button ng-click="points.tempsetlock.setValue(0)" class="md-raised"
+                                    ng-class="points.tempsetlock.value == 0 ? 'success-button' : ''"
+                                    ng-disabled="points.tempsetlock.value == 0">
+                                    <md-icon class="material-icons" style="margin-right: 5px" role="img"
+                                        aria-hidden="true">lock_open</md-icon>{{points.tempsetlock.value == 0 ?
+                                    "YETKILI" : "YETKI VER"}}
+                                </md-button>
+                                <md-button ng-click="points.tempsetlock.setValue(1)" class="md-raised"
+                                    ng-disabled="points.tempsetlock.value == 1"
+                                    ng-class="points.tempsetlock.value == 1 ? 'danger-button' : ''">
+                                    <md-icon class="material-icons" style="margin-right: 5px" role="img"
+                                        aria-hidden="true">lock</md-icon>{{points.tempsetlock.value == 1 ?
+                                    "KILITLI" :
+                                    "KILITLE"}}
+                                </md-button>
+                            </div>
+                        </div>
+                    </div>
+                </md-card-content>
+            </div>
+        </md-card>
+        <md-card flex="">
+            <div layout="column">
+                <md-toolbar class="md-hue-3">
+                    <div layout="row" layout-align="start start">
+                        <div class="md-toolbar-tools" ng-bind="'Alarmlar'"></div>
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+
+                    <div flex="" ng-show="points.commerror">
+                        <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                            point="points.commerror" />
+                        </ma-point-value>
+                    </div>
+
+                    <div flex="" ng-show="points.errorstatus">
+                        <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                            point="points.errorstatus" />
+                        </ma-point-value>
+                        <md-button style="width: 140px;" ng-click="points.errorreset.setValue(1)"
+                            class="md-raised md-warn" ng-if="points.errorstatus.value"><md-icon
+                                style="margin-right: 10px">history</md-icon>ALARM RESET
+                        </md-button>
+                    </div>
+
+                    <div flex="" ng-show="points.filteralarm">
+                        <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                            point="points.filteralarm" />
+                        </ma-point-value>
+                        <md-button style="width: 140px;" ng-click="points.filteralarmreset.setValue(1)"
+                            class="md-raised md-warn" ng-if="points.filteralarm.value"><md-icon
+                                style="margin-right: 10px">history</md-icon>ALARM RESET
+                        </md-button>
+                    </div>
+
+                </md-card-content>
+            </div>
+        </md-card>
+    </div>
+</div>
+<style>
+    .success-button[disabled] {
+        background: green !important;
+        color: rgb(255, 255, 255) !important;
+        opacity: 0.6;
+    }
+
+    .success-button[disabled] md-icon {
+        display: none;
+    }
+
+    .danger-button[disabled] {
+        color: rgb(255, 255, 255) !important;
+        background-color: rgb(255, 87, 34) !important;
+        opacity: 0.6;
+    }
+
+    .danger-button[disabled] md-icon {
+        display: none;
+    }
+
+    .muted-button[disabled] md-icon {
+        display: none;
+    }
+
+
+    .active-tab {
+        background: green !important;
+        color: white !important;
+        opacity: 0.6;
+    }
+
+    .active-tab md-icon {
+        color: white !important;
+    }
+
+    .lock-card label {
+        min-width: 115px;
+        display: inline-block;
+    }
+
+    .svg-button {
+        position: absolute;
+        top: 38%;
+        left: 0;
+        width: 30%;
+        display: block;
+    }
+
+    .svg-button button {
+        margin: 0;
+    }
+
+    [id^=Direction_] {
+        fill: #d8d8d8;
+        transition: all ease 0.3s;
+    }
+
+    [id^=Direction_]:hover,
+    [id^=Direction_]:hover polygon,
+    [id^=Direction_]:hover path,
+    [id^=Direction_].active-swing:hover,
+    [id^=Direction_].active-swing:hover polygon,
+    [id^=Direction_].active-swing:hover path {
+        fill: #ababab;
+    }
+
+    .device-off .active-bar,
+    .device-off #Direction_auto.active-bar path,
+    .device-off #Direction_auto.active-bar polygon,
+    .device-off #Speed_auto.active-bar polygon,
+    .device-off #Speed_auto.active-bar rect {
+        fill: #ababab;
+    }
+
+    .active-bar,
+    #Direction_auto.active-bar path,
+    #Direction_auto.active-bar polygon,
+    #Speed_auto.active-bar polygon,
+    #Speed_auto.active-bar rect {
+        fill: limegreen;
+    }
+
+    .active-bar:not(.my-button) {
+        cursor: auto !important;
+    }
+
+    .active-bar[id^=Direction_]:hover,
+    #Direction_auto.active-bar:hover path,
+    #Direction_auto.active-bar:hover polygon {
+        fill: limegreen;
+        filter: none;
+    }
+
+    .device-off .active-bar[id^=Direction_]:hover,
+    .device-off #Direction_auto.active-bar:hover path,
+    .device-off #Direction_auto.active-bar:hover polygon {
+        fill: #ababab;
+        filter: none;
+    }
+
+    wi-device-view ma-point-value,
+    wi-device-view ma-set-point-value {
+        margin: 6px 8px;
+    }
+
+    .device-on #Direction_1.active-swing {
+        animation: swing1 8s step-end 0s infinite;
+    }
+
+    .device-on #Direction_2.active-swing {
+        animation: swing2 8s step-end 0s infinite;
+    }
+
+    .device-on #Direction_3.active-swing {
+        animation: swing3 8s step-end 0s infinite;
+    }
+
+    .device-on #Direction_4.active-swing {
+        animation: swing1 8s step-end 4s infinite;
+    }
+
+    @keyframes swing1 {
+        0% {
+            fill: limegreen;
+        }
+
+        16.67% {
+            fill: #d8d8d8;
+        }
+    }
+
+    @keyframes swing2 {
+        0% {
+            fill: #d8d8d8;
+        }
+
+        16.67% {
+            fill: limegreen;
+        }
+
+        33.33% {
+            fill: #d8d8d8;
+        }
+
+        83.33% {
+            fill: limegreen;
+        }
+    }
+
+    @keyframes swing3 {
+        0% {
+            fill: #d8d8d8;
+        }
+
+        33.33% {
+            fill: limegreen;
+        }
+
+        50% {
+            fill: #d8d8d8;
+        }
+
+        66.67% {
+            fill: limegreen;
+        }
+
+        83.33% {
+            fill: #d8d8d8;
+        }
+    }
+
+    .my-button:hover,
+    #Direction_auto:hover polygon,
+    #Direction_auto:hover path {
+        transition: all ease 0.1s;
+        filter: saturate(1.5) brightness(0.8);
+    }
+
+    /*.md-button.md-mangoLight2020-theme.md-raised.md-primary[disabled] {*/
+    /*    color: rgba(255,255,255,0.87);*/
+    /*    background-color: rgb(34,112,155);*/
+    /*}*/
+    /*.md-button.md-mangoLight2020-theme.md-raised.md-warn[disabled] {*/
+    /*    color: rgba(255,255,255,0.87);*/
+    /*    background-color: rgb(255,87,34);*/
+    /*}*/
+
+    .button-container {
+        margin: 6px 8px;
+    }
+
+    wi-device-view div[md-tabs-template] {
+        margin-top: 20px;
+    }
+</style>

@@ -1,0 +1,275 @@
+<ma-get-point-value ng-repeat="(key, value) in points" point="value"></ma-get-point-value>
+
+<div layout="column">
+	<div layout="row">
+		<md-card flex="60">
+			<div layout="column">
+				<md-toolbar class="md-hue-3">
+					<div class="md-toolbar-tools" ng-bind="'Ekipman Gorunum'"></div>
+				</md-toolbar>
+
+				<span>{{animTime=(150-(0.5*Points["fanspd"].value | number:0));""}}</span>
+				<md-card-content class="ef-device">
+					<ma-svg ng-include="$ctrl.diagram">
+
+						<div ma-selector="#Layer_1" ng-class="deviceName"></div>
+
+						<div ma-selector="#Device_EFwithFilter" ng-if="points.filteralarm"></div>
+						<div ma-selector="#Device_EF" ng-if="!points.filteralarm"></div>
+
+						<!--<div ma-selector="#Text_fanstatus text tspan" ng-bind="points.fanstatus.renderedValue" ng-style="{'fill' : points.fanstatus.renderedValue == 'ON' ? 'green' : 'gray'}"></div>-->
+						<!--<div ma-selector="#Text_fancommand text tspan" ng-bind="points.fancommand.renderedValue" ng-click="$root.editPoint($event,points.fancommand'])"></div>-->
+						<!--<div ma-selector="#Text_fanotoman text tspan" ng-bind="points.fanotoman.renderedValue" ng-style="{'fill' : points.fanotoman.renderedValue == 'Otomatik' ? 'green' : 'red'}"></div>-->
+						<!--<div ma-selector="#Text_fantermalarm text tspan" ng-bind="points.fantermalarm.renderedValue" ng-style="{'fill' : points.fantermalarm.renderedValue == 'Normal' ? 'green' : 'red'}"></div>-->
+
+						<div ma-selector="#Text_baslik text tspan" ng-bind="$ctrl.deviceTitle"></div>
+						<div ma-selector="#Text_baslik-2 text tspan" ng-bind="$ctrl.deviceTitle"></div>
+						
+						<div ma-selector="#Text_baslik" ng-if="$ctrl.deviceTitle"></div>
+						<div ma-selector="#Text_baslik-2" ng-if="$ctrl.deviceTitle"></div>
+
+						<div ma-selector="#Text_airduct1 text tspan" ng-attr-md-direction="right"
+							ng-bind="$ctrl.airDuctTitle" wi-svg-tooltip="$ctrl.airDuctTitle"></div>
+						<div ma-selector="#Text_airduct1" ng-if="$ctrl.airDuctTitle"></div>
+						
+						<div ma-selector="#Text_airduct1-2 text tspan" ng-attr-md-direction="right"
+							ng-bind="$ctrl.airDuctTitle" wi-svg-tooltip="$ctrl.airDuctTitle"></div>
+						<div ma-selector="#Text_airduct1-2" ng-if="$ctrl.airDuctTitle"></div>
+
+						<!--Alarms-->
+						<div ma-selector="#Alarm_termik" ng-if="points.fantermalarm.value" class="ot-throb-opacity">
+						</div>
+						<div ma-selector="#Manuel_ef" ng-if="points.fanotoman.value" class="ot-throb-opacity"></div>
+						<div ma-selector="#Maint_filter" ng-if="points.filteralarm.value" class="ot-throb-opacity">
+						</div>
+
+						<!-- Fan Animation Section -->
+						<div ma-selector="#Fan1_3"
+							ng-style="{'animation' : points.fanstatus.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/3)*0 + 'ms infinite' : 'unset'}">
+						</div>
+						<div ma-selector="#Fan1_2"
+							ng-style="{'animation' : points.fanstatus.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/3)*1 + 'ms infinite' : 'unset'}">
+						</div>
+						<div ma-selector="#Fan1_1"
+							ng-style="{'animation' : points.fanstatus.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/3)*2 + 'ms infinite' : 'unset'}">
+						</div>
+
+						<div ma-selector="#Fan2_3"
+							ng-style="{'animation' : points.fanstatus.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/3)*0 + 'ms infinite' : 'unset'}">
+						</div>
+						<div ma-selector="#Fan2_2"
+							ng-style="{'animation' : points.fanstatus.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/3)*1 + 'ms infinite' : 'unset'}">
+						</div>
+						<div ma-selector="#Fan2_1"
+							ng-style="{'animation' : points.fanstatus.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/3)*2 + 'ms infinite' : 'unset'}">
+						</div>
+
+						<!-- Arrow Animation Section -->
+						<div ma-selector="#Arrow1_1" class="moveRight" ng-if="points.fanstatus.value"></div>
+				        <div ma-selector="#Arrow2_1" class="moveRight" ng-if="points.fanstatus.value"></div>
+				        
+				        <div ma-selector="#Arrow1_2" class="moveRight" ng-if="points.fanstatus.value"></div>
+				        <div ma-selector="#Arrow2_2" class="moveRight" ng-if="points.fanstatus.value"></div>
+        
+					</ma-svg>
+					<div class="set-buttons-container" ng-if="points.fancommand">
+						<md-button ng-click="points.fancommand.setValue(0)" class="md-raised"
+							ng-class="points.fanstatus.value == 1 ? 'active-button' : ''"
+							ng-disabled="points.fanstatus.value == 1">{{points.fanstatus.value == 0 ? "Ac" : "Acik"}}
+						</md-button>
+						<md-button ng-click="points.fancommand.setValue(1)" class="md-raised"
+							ng-class="points.fanstatus.value == 0 ? 'md-primary' : ''"
+							ng-disabled="points.fanstatus.value == 0">{{points.fanstatus.value == 1 ? "Kapat" :
+							"Kapali"}}
+						</md-button>
+					</div>
+				</md-card-content>
+			</div>
+		</md-card>
+		<div flex="40">
+			<md-card style="height: 47%;">
+				<div layout="column">
+					<md-toolbar class="md-hue-3">
+						<div layout="row" layout-align="start start">
+							<div class="md-toolbar-tools" ng-bind="'Cihaz Durumu'"></div>
+						</div>
+					</md-toolbar>
+					<md-card-content>
+						<div layout="column" layout-align="start start">
+							<div flex="" ng-show="points.fanstatus">
+								<ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+									point="points.fanstatus" />
+								</ma-point-value>
+							</div>
+							<div flex="" ng-show="points.fancommand">
+								<ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+									point="points.fancommand" />
+								</ma-point-value>
+							</div>
+							<div flex="" ng-show="points.fanotoman">
+								<ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+									point="points.fanotoman" />
+								</ma-point-value>
+							</div>
+						</div>
+					</md-card-content>
+				</div>
+			</md-card>
+			<md-card style="height: 48%;">
+				<div layout="column">
+					<md-toolbar class="md-hue-3">
+						<div layout="row" layout-align="start start">
+							<div class="md-toolbar-tools" ng-bind="'Alarm Durumu'"></div>
+						</div>
+					</md-toolbar>
+					<md-card-content>
+						<div layout="column" layout-align="start start">
+							<div flex="" ng-show="points.fantermalarm">
+								<ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+									point="points.fantermalarm" />
+								</ma-point-value>
+							</div>
+							<div flex="" ng-show="points.filteralarm">
+								<ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+									point="points.filteralarm" />
+								</ma-point-value>
+							</div>
+						</div>
+					</md-card-content>
+				</div>
+			</md-card>
+		</div>
+	</div>
+</div>
+
+<style>
+	g[id] text {
+		text-anchor: middle;
+	}
+
+	.md-tooltip {
+		white-space: pre-line;
+	}
+
+	.md-tooltip {
+		height: auto !important;
+		padding: 8px;
+		/*background-color: rgb(34 112 155) !important;*/
+		/*color: rgba(255,255,255,0.87)*/
+	}
+
+	h5.tooltip-header {
+		margin: 5px;
+		font-weight: bold;
+		font-size: 12px;
+		text-align: center;
+		text-transform: capitalize;
+		background: rgb(34 112 155);
+		border-radius: 3px;
+		/*text-decoration: underline;*/
+		color: rgba(255, 255, 255, 0.87)
+	}
+
+	.ef-device {
+		position: relative;
+	}
+
+	.ef-device .set-buttons-container {
+	    position: absolute;
+	    bottom: 11%;
+	    left: 52%;
+	    transform: translate(-50%, -50%) scale(1.2);
+	}
+
+	.ot-throb-opacity {
+		animation: throb-opacity 2s ease-in-out infinite;
+	}
+
+	.active-button {
+		background: green !important;
+		color: white !important;
+		opacity: 0.6;
+	}
+
+	g[id^="Alarm_"] text {
+		text-anchor: unset !important;
+	}
+
+	g[id^=Fan1_1],
+	g[id^=Fan2_1] {
+		opacity: 1;
+	}
+
+	g[id=Fan1_2],
+	g[id=Fan1_3],
+	g[id=Fan2_2],
+	g[id=Fan2_3] {
+		opacity: 0;
+	}
+
+	@keyframes fanRotate {
+		0% {
+			opacity: 1;
+		}
+
+		33.3% {
+			opacity: 1;
+		}
+
+		33.5% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 0;
+		}
+	}
+
+	#Device_EFwithFilter>g>rect:first-child,
+	#Device_EF>g>rect:first-child {
+		fill: #ebf2f7;
+		stroke: unset;
+	}
+	
+	.moveRight {
+        animation: moveRight2 2s linear infinite;
+    }
+    
+    @keyframes moveRight {
+        0% {
+        	transform: translate(-140px, 0px); 
+            opacity: 0;
+        }
+        20% { 
+            opacity: 1;
+        }
+        80% { 
+            opacity: 1;
+        }
+        100% { 
+            transform: translate(10px, 0px); 
+            opacity: 0;
+        }
+    }
+        
+    .moveRight2 {
+        animation: moveRight2 2s linear 2s infinite;
+    }
+    
+    @keyframes moveRight2 {
+        0% {
+        	transform: translate(-160px, 0px); 
+            opacity: 0;
+        }
+        20% { 
+            opacity: 1;
+        }
+        80% { 
+            opacity: 1;
+        }
+        100% { 
+            transform: translate(10px, 0px); 
+            opacity: 0;
+        }
+    }
+</style>

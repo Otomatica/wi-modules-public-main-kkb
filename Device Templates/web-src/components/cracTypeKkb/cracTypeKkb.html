@@ -1,0 +1,499 @@
+<ma-get-point-value ng-repeat="(key, value) in points" point="value"></ma-get-point-value>
+
+<ma-point-query query="{$and:true, deviceName:deviceName, 'tags.grafikbind':'fanspd'}" limit="1000" points="FanData"></ma-point-query>
+<ma-get-point-value points="FanData" on-value-updated="fanValueChanged(point)"></ma-get-point-value>
+    
+<md-tabs md-left-tabs>
+ <md-tab label="Ekipman Grafigi">
+<md-card flex="">
+<div layout="column">
+	<md-card-content> 
+		<span>{{animTime=(550-(4*points.fanspd.value | number:0));""}}</span> 
+		<wi-svg ng-include="$ctrl.diagram">
+			<!-- Fan Animation Section -->
+			<div ma-selector="#Blades_Fan11" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*0 + 'ms infinite' : 'unset'}"></div>
+		    <div ma-selector="#Blades_Fan12" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*1 + 'ms infinite' : 'unset'}"></div>
+		    <div ma-selector="#Blades_Fan13" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*2 + 'ms infinite' : 'unset'}"></div>
+		    <div ma-selector="#Blades_Fan14" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*3 + 'ms infinite' : 'unset'}"></div>
+		    <div ma-selector="#Blades_Fan15" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*4 + 'ms infinite' : 'unset'}"></div>
+		    
+		    <div ma-selector="#Blades_Fan21" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*0 + 'ms infinite' : 'unset'}"></div>
+		    <div ma-selector="#Blades_Fan22" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*1 + 'ms infinite' : 'unset'}"></div>
+		    <div ma-selector="#Blades_Fan23" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*2 + 'ms infinite' : 'unset'}"></div>
+		    <div ma-selector="#Blades_Fan24" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*3 + 'ms infinite' : 'unset'}"></div>
+		    <div ma-selector="#Blades_Fan25" ng-style="{'animation' : points.fanspd.value ? 'fanRotate ' + animTime + 'ms linear ' + (animTime/5)*4 + 'ms infinite' : 'unset'}"></div>
+		    
+		    <!--Alarms-->
+            <div ma-selector="#Alarm_comp1highpre" ng-if="points.comp1highpre.value" class="ot-throb-opacity"></div>
+            <div ma-selector="#Alarm_comp1lowpre" ng-if="points.comp1lowpre.value" class="ot-throb-opacity"></div>
+            <div ma-selector="#Alarm_comp1pumpfault" ng-if="points.comp1pumpfault.value" class="ot-throb-opacity"></div>
+            <div ma-selector="#Alarm_comp1overload" ng-if="points.comp1overload.value" class="ot-throb-opacity"></div>
+            
+            <div ma-selector="#Alarm_comp2highpre" ng-if="points.comp2highpre.value" class="ot-throb-opacity"></div>
+            <div ma-selector="#Alarm_comp2lowpre" ng-if="points.comp2lowpre.value" class="ot-throb-opacity"></div>
+            <div ma-selector="#Alarm_comp2pumpfault" ng-if="points.comp2pumpfault.value" class="ot-throb-opacity"></div>
+            <div ma-selector="#Alarm_comp2overload" ng-if="points.comp2overload.value" class="ot-throb-opacity"></div>
+            
+            <div ma-selector="#Alarm_filterfault" ng-if="points.filterfault.value" class="ot-throb-opacity"></div>
+            <div ma-selector="#Alarm_airflowloss" ng-if="points.airflowloss.value" class="ot-throb-opacity"></div>
+            <div ma-selector="#Alarm_ecfanfault" ng-if="points.ecfanfault.value" class="ot-throb-opacity"></div>
+                        
+		    <!-- Left Table Section -->
+			<div ma-selector="#Text_systmstatus tspan" 
+				ng-bind="points.systmstatus.renderedValue"
+				ng-style="{'fill' : points.systmstatus.value == 1 ? 'green' : 'gray'}"></div>
+			<div ma-selector="#Text_localtemp tspan:nth-child(1)"
+				ng-bind="points.rtntemp.renderedValue"></div>
+			<div ma-selector="#Text_localhum tspan:nth-child(1)"
+				ng-bind="points.rtnhum.renderedValue"></div>
+			<div ma-selector="#Text_returntemp tspan:nth-child(1)"
+				ng-bind="points.rtntemp.renderedValue"></div>
+			<div ma-selector="#Text_returnhum tspan:nth-child(1)"
+				ng-bind="points.rtnhum.renderedValue"></div>
+			<div ma-selector="#Text_outairfilterpress tspan:nth-child(1)"
+				ng-bind="points.outairfilterpress.renderedValue"></div>
+			<div ma-selector="#Text_returnairpress tspan:nth-child(1)"
+				ng-bind="points.returnairpress.renderedValue"></div>
+			<div ma-selector="#Text_outairhum tspan:nth-child(1)"
+				ng-bind="points.outairhum.renderedValue"></div>
+				
+			<!-- Compressor -->
+			<div ma-selector="#Led_comp1 circle:nth-child(2)"
+				ng-style="{'fill' : points.compstatus.value != 0 ? 'lime' : '#f2f2f2'}"></div>
+			<div ma-selector="#Led_comp2 circle:nth-child(2)"
+				ng-style="{'fill' : points.compstatus.value == 100 ? 'lime' : '#f2f2f2'}"></div>
+				
+			<div ma-selector="#Blue_comp2" ng-if="points.compstatus.value > '50'"></div>
+			<div ma-selector="#Blue_comp1" ng-if="points.compstatus.value > '0'"></div>
+				
+			<!-- Fan -->
+			<div ma-selector="#Bar_fanspeed"
+				ng-attr-stroke-dashoffset="{{((100-points.fanspd.value)/100)*220}}"></div>
+			<div ma-selector="#Text_fanspeed tspan"
+				ng-bind="points.fanspd.value | number:1"></div>
+		
+			<div ma-selector="#Text_fanstatus"
+				style="transform: translate(22px, 0);"></div>
+			<div ma-selector="#Text_fanstatus text tspan"
+				ng-bind="points.fanstatus.renderedValue"
+				ng-style="{'fill' : points.fanstatus.value ? 'green' : 'gray'}"></div>
+				
+			<!-- Humidifier -->
+			<div ma-selector="#Bar_humusage"
+				ng-attr-stroke-dashoffset="{{((100-points.humusage.value)/100)*220}}"></div>
+			<div ma-selector="#Text_humusage tspan"
+				ng-bind="points.humusage.value | number:1"></div>
+		
+			<div ma-selector="#Text_humstatus"
+				style="transform: translate(22px, 0);"></div>
+			<div ma-selector="#Text_humstatus text tspan"
+				ng-bind="points.humstatus.renderedValue" 
+				ng-style="{'fill' : points.humstatus.value ? 'green' : 'gray'}"></div>
+			
+			<!-- Unit status and Work hour windows height adjustment for devices without humidifier -->
+			<div ma-selector="#Status_humidifier, #Workhour_humidifier" ng-if="points.humstatus"></div>
+			
+			<div ma-selector="#Rect_unitstatus"
+				ng-style="!points.humstatus ? {'height':'474px'} : {}"></div>
+				
+			<div ma-selector="#Rect_workhour"
+				ng-style="!points.humstatus ? {'height':'200px'} : {}"></div>
+				
+			<!-- Right Table Section -->
+			<div ma-selector="#Text_comp1workhour tspan"
+				ng-bind="points.comp1hour.renderedValue"></div>
+			<div ma-selector="#Text_comp2workhour tspan"
+				ng-bind="points.comp2hour.renderedValue"></div>
+			<div ma-selector="#Text_fanworkhour tspan"
+				ng-bind="points.fanhour.renderedValue"></div>
+			<div ma-selector="#Text_humworkhour tspan"
+				ng-bind="points.humhour.renderedValue"></div>
+				
+			<div ma-selector="#Text_sysstatus tspan"
+				ng-bind="points.sysstatus.renderedValue"
+				ng-style="{'fill' : points.sysstatus.value > 2 ? 'red' : 'green'}"></div>
+		
+			<div ma-selector="#Text_syscontmode tspan"
+				ng-bind="points.syscontmode.renderedValue"
+				ng-style="{'fill' : points.syscontmode.value ? 'red' : 'green'}"></div>
+				
+			<div ma-selector="#Text_fancontmode tspan"
+				ng-bind="points.fancontmode.renderedValue"
+				ng-style="{'fill' : points.fancontmode.value == '0' ? 'green' : points.fancontmode.value == '1' ? 'red' : 'gray'}"></div>
+			
+			<!-- Arrows -->
+			<div ma-selector="#Arrows_return, #Arrows_supply" 
+				ng-if="points.systmstatus.value==1"></div>
+			
+		</wi-svg> </md-card-content>
+	</div>
+</md-card> 
+<md-card> 
+<md-toolbar class="md-hue-3">
+<div layout="row" layout-align="start start">
+	<div class="md-toolbar-tools" ng-bind="'Setleme'"></div>
+	<div>
+		<md-button class="md-icon-button md-primary" ng-click="test=true" ng-show="!test" aria-label="Setleme">
+			<md-icon class="material-icons" role="img" aria-hidden="true">edit</md-icon>
+		</md-button>
+		<md-button class="md-icon-button md-warn" ng-click="test=false" ng-show="test" aria-label="Setleme">
+			<md-icon class="material-icons" role="img" aria-hidden="true">edit_off</md-icon>
+		</md-button>
+	</div>
+</div>
+</md-toolbar>
+<div layout="row" layout-align="space-between center">
+	<md-card flex="">
+		<div layout="column" layout-align="space-between start">
+			<md-card-content>
+				<div layout="column" layout-align="space-between start">
+					<div flex="">
+						<ma-point-value label="NAME" point="points.sysonoffset"
+							ng-show="!test"></ma-point-value>
+						<ma-set-point-value label="NAME" point="points.sysonoffset"
+							ng-show="test"></ma-set-point-value>
+					</div>
+				</div>
+			</md-card-content>
+		</div>
+	</md-card>
+
+	<md-card flex="">
+		<div layout="column" layout-align="space-between start">
+			<md-card-content>
+				<div layout="column" layout-align="space-between start">
+					<div flex="">
+						<ma-point-value label="NAME" point="points.tempsetwrite"
+							ng-show="!test"></ma-point-value>
+						<ma-set-point-value label="NAME" point="points.tempsetwrite"
+							ng-show="test"></ma-set-point-value>
+					</div>
+					<div flex="" ng-if="points.humsetwrite">
+						<ma-point-value label="NAME" point="points.humsetwrite"
+							ng-show="!test"></ma-point-value>
+						<ma-set-point-value label="NAME" point="points.humsetwrite"
+							ng-show="test"></ma-set-point-value>
+					</div>
+				</div>
+			</md-card-content>
+		</div>
+	</md-card>
+</div>
+</md-card>
+
+</md-tab> <md-tab label="Cihaz Alarm Noktalari">
+<div layout="row">
+	<md-card flex="">
+	<div layout="column">
+		<md-card-content>
+		<div layout="row" layout-align="space-between">
+		
+			<div layout="column" flex="">
+				<div flex="">
+					<!-- Alarm Reset Button (Set point value to '2') -->
+					<md-button ng-click="points.alarmreset.setValue(2)" style="width:140px" class="md-raised md-warn">
+						<md-icon style="margin-right: 10px;">history</md-icon>ALARM RESET
+					</md-button>
+					<!-- Acknowledge Button (Set point value to '4') -->
+					<md-button ng-click="points.alarmreset.setValue(4)" style="width:230px" class="md-raised md-primary">
+						<md-icon style="margin-right: 10px;">visibility</md-icon>GORULDU OLARAK ISARETLE
+					</md-button>
+					
+				</div>
+			</div>
+		</div>
+		</md-card-content>
+	</div>
+	</md-card>
+</div>
+<div layout="row">
+	<md-card flex="">
+	<div layout="column">
+		<md-toolbar class="md-hue-3">
+		<div class="md-toolbar-tools" ng-bind="'CRAC Alarmlari'"></div>
+		</md-toolbar>
+
+		<md-card-content>
+		<div layout="row" layout-align="space-between">
+			<div layout="column" flex="">
+				<div flex="">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.unitoff"/></ma-point-value>
+				</div>
+				<div flex="" ng-show="points.uniton">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.uniton"/></ma-point-value>
+				</div>
+				<div flex="" ng-show="points.unitpartshtdwn">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.unitpartshtdwn"/></ma-point-value>
+				</div>
+				<div flex="" ng-show="points.unitshtdwn">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.unitshtdwn"/></ma-point-value>
+				</div>
+				<div flex="">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.unitstndby"/></ma-point-value>
+				</div>
+				<div flex="" ng-show="points.unithighpowshotdown">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.unithighpowshotdown"/></ma-point-value>
+				</div>
+			</div>
+			<div layout="column" flex="">
+				<div flex="" ng-show="points.unitmaint">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.unitmaint"/></ma-point-value>
+				</div>
+
+				<div flex="" ng-show="points.bmstmoutper">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.bmstmoutper"/></ma-point-value>
+				</div>
+				<div flex="" ng-show="points.ecfanfault">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.ecfanfault"/></ma-point-value>
+				</div>
+				<div flex="" ng-show="points.filterfault">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.filterfault"/></ma-point-value>
+				</div>
+				<div flex="" ng-show="points.shutdownlosspow">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.shutdownlosspow"/></ma-point-value>
+				</div>
+				<div flex="" ng-show="points.airflowloss">
+					<ma-point-value enable-popup="right" label="NAME"
+						flash-on-change="true" point="points.airflowloss"/></ma-point-value>
+				</div>
+			</div>
+		</div>
+		</md-card-content>
+	</div>
+	</md-card>
+</div>
+<div layout="row">
+	<md-card flex="">
+	<div layout="column">
+		<md-toolbar class="md-hue-3">
+		<div class="md-toolbar-tools" ng-bind="'Kompresor 1 Alarmlari'"></div>
+		</md-toolbar>
+		<md-card-content>
+		<div layout="column" layout-align="start start">
+			<div flex="" ng-show="points.comp1highpre">
+				<ma-point-value enable-popup="right" label="NAME"
+					flash-on-change="true" point="points.comp1highpre"/></ma-point-value>
+			</div>
+
+			<div flex="" ng-show="points.comp1lowpre">
+				<ma-point-value enable-popup="right" label="NAME"
+					flash-on-change="true" point="points.comp1lowpre"/></ma-point-value>
+			</div>
+			<div flex="" ng-show="points.comp1overload">
+				<ma-point-value enable-popup="right" label="NAME"
+					flash-on-change="true" point="points.comp1overload"/></ma-point-value>
+			</div>
+			<div flex="" ng-show="points.comp1pumpfault">
+				<ma-point-value enable-popup="right" label="NAME"
+					flash-on-change="true" point="points.comp1pumpfault"/></ma-point-value>
+			</div>
+		</div>
+		</md-card-content>
+	</div>
+	</md-card>
+	<md-card flex="">
+	<div layout="column">
+		<md-toolbar class="md-hue-3">
+		<div class="md-toolbar-tools" ng-bind="'Kompresor 2 Alarmlari'"></div>
+		</md-toolbar>
+		<md-card-content>
+
+		<div layout="column" layout-align="start start">
+			<div flex="" ng-show="points.comp2highpre">
+				<ma-point-value enable-popup="right" label="NAME"
+					flash-on-change="true" point="points.comp2highpre"/></ma-point-value>
+			</div>
+
+			<div flex="" ng-show="points.comp2lowpre">
+				<ma-point-value enable-popup="right" label="NAME"
+					flash-on-change="true" point="points.comp2lowpre"/></ma-point-value>
+			</div>
+			<div flex="" ng-show="points.comp2overload">
+				<ma-point-value enable-popup="right" label="NAME"
+					flash-on-change="true" point="points.comp2overload"/></ma-point-value>
+			</div>
+			<div flex="" ng-show="points.comp2pumpfault">
+				<ma-point-value enable-popup="right" label="NAME"
+					flash-on-change="true" point="points.comp2pumpfault"/></ma-point-value>
+			</div>
+		</div>
+
+		</md-card-content>
+	</div>
+	</md-card>
+</div>
+
+</md-tab> </md-tabs>
+
+<style>
+    /* #Bar_fanspeed,
+    #Bar_valvepos,
+    #Bar_comp1 {
+        transform-box: fill-box;
+        transform-origin: center;
+        stroke-dasharray:220;
+        transform: rotate(-90deg);
+        transition: stroke-dashoffset linear 0.3s;
+    }*/
+    
+    circle[id^=Bar_] {
+        transform-box: fill-box;
+        transform-origin: center;
+        stroke-dasharray:220;
+        transform: rotate(-90deg);
+        transition: stroke-dashoffset linear 0.3s;
+    }
+    
+    #supplyfanspeed circle:nth-child(3),
+    #outfanspeed circle:nth-child(3),
+    #cwvalvepos circle:nth-child(3) {
+        stroke-width: 2px;
+        opacity: 0.7;
+    }
+    
+    #Led_unitstatus circle, #Led_comp1 circle, #Led_comp2 circle {
+        transition: fill linear 0.2s;
+    }
+    
+    #Text_fanstatus {
+        font-weight: bold;
+    } 
+    
+    /*#returnairarrow {*/
+    /*    animation: moveUp 2s linear 0s infinite;*/
+    /*}*/
+    /*#supplyairarrow {*/
+    /*    animation: moveDown 2s linear 2s infinite;*/
+    /*}*/
+    /*#exhairarrow {*/
+    /*    animation: moveRight 2s linear 2s infinite;*/
+    /*}*/
+    /*#outairarrow {*/
+    /*    animation: moveRight 2s linear 0s infinite;*/
+    /*}*/
+    
+    @keyframes moveUp {
+        0% { 
+            transform: translate(0, 8); 
+            opacity: 0;
+        }
+        30% { 
+            transform: translate(0, 0); 
+            opacity: 1;
+        }
+        100% { 
+            transform: translate(0, -40px);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes moveDown {
+        0% { 
+            transform: translate(0, -8); 
+            opacity: 0;
+        }
+        30% { 
+            transform: translate(0, 0); 
+            opacity: 1;
+        }
+        100% { 
+            transform: translate(0, 40px);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes moveRight {
+        0% { 
+            transform: translate(-8, 0); 
+            opacity: 0;
+        }
+        30% { 
+            transform: translate(0, 0); 
+            opacity: 1;
+        }
+        100% { 
+            transform: translate(40px, -5px);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes moveLeft {
+        0% { 
+            transform: translate(8, 0); 
+            opacity: 0;
+        }
+        30% { 
+            transform: translate(0, 0); 
+            opacity: 1;
+        }
+        100% { 
+            transform: translate(-40px, -5px);
+            opacity: 0;
+        }
+    }
+    
+    .flash-on-change {
+        animation: flashonchange 5s linear 5s infinite;
+    }
+    
+    @keyframes flashonchange {
+        0% { fill: rgb(0,0,0) }
+        30% { fill: rgb(0,0,0) }
+        40% { fill: rgb(208,106,73) }
+        60% { fill: rgb(208,106,73) }
+        70% { fill: rgb(0,0,0) }
+        100% { fill: rgb(0,0,0) }
+    }
+    
+    text[id],
+    g[id]:not(.svg-pan-zoom_viewport):not(#Workhour_humidifier):not(#Status_humidifier) text {
+        text-anchor:middle;
+    }
+    
+    .ot-throb-opacity {
+        animation: throb-opacity 2s ease-in-out infinite;
+    }
+    
+    g[id^=Blades_Fan] {
+        opacity: 0;
+    }
+    
+    g[id=Blades_Fan11],
+    g[id=Blades_Fan21] {
+        opacity: 1;
+    }
+    
+    @keyframes fanRotate {
+      0% {
+        opacity: 1;
+      }
+      
+      20% {
+        opacity: 1;
+      }
+      
+      21% {
+        opacity: 0;
+      }
+      
+      100% {
+        opacity: 0;
+      }
+    }
+   
+</style>
+
+
+
+

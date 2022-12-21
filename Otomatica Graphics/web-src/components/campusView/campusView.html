@@ -1,0 +1,341 @@
+<div ng-if="!$ctrl.enabled" class="md-toolbar-tools" ma-tr="otomaticaGraphic.graphicDisabled"></div>
+
+<div ng-if="$ctrl.enabled">
+	<div layout layout-align="space-between">
+
+<!--	<div layout="column" layout layout-align="end start">
+			<span>
+				<a class="md-primary wi-no-underline" ma-tr="otomaticaGraphic.campusView.area"></a>  :
+				<span ng-bind="$ctrl.roomSize"></span>
+			</span>
+			<span>
+				<a class="md-primary wi-no-underline" ma-tr="otomaticaGraphic.campusView.capacity"></a>  :
+				<span ng-bind="$ctrl.capacity"></span>
+			</span>
+		</div>
+		<div layout="column" layout layout-align="end center">
+			<span>
+				<a class="md-primary wi-no-underline" ma-tr="otomaticaGraphic.campusView.fuelRemainingTime"></a>  :
+				<ma-point-value ng-if="$ctrl.fuelremtime"
+		    		style="cursor: pointer;" 
+		    		point-xid="{{$ctrl.fuelremtime}}"
+		    		enable-popup="left"
+		    		hide-event-indicator="true"
+		    		flash-on-change="true">	
+		    	</ma-point-value>
+			</span>
+		</div>
+-->
+		<div layout="column" layout layout-align="end start">
+			<span>
+				<a class="md-primary wi-no-underline"ma-tr="otomaticaGraphic.campusView.outsideTemp"></a>  :
+		    	<ma-point-value ng-if="$ctrl.outsideTemperature"
+		    		style="cursor: pointer;" 
+		    		point-xid="{{$ctrl.outsideTemperature}}"
+		    		hide-event-indicator="true"
+		    		enable-popup="right"
+		    		flash-on-change="true">
+	    		</ma-point-value>
+			</span>
+			<span>
+				<a class="md-primary wi-no-underline"ma-tr="otomaticaGraphic.campusView.outsideHum"></a>  :
+		    	<ma-point-value ng-if="$ctrl.outsideHumidity"
+		    		style="cursor: pointer;" 
+		    		point-xid="{{$ctrl.outsideHumidity}}"
+		    		hide-event-indicator="true"
+		    		enable-popup="right"
+		    		flash-on-change="true">
+	    		</ma-point-value>
+			</span>
+		</div>
+		
+		
+		<div layout="column" layout layout-align="end end">
+			<md-switch style="margin: 0;" class="wi-switch-label" ng-model="chartsEnable" ng-change="$ctrl.getChartPoints()" ma-tr="ui.app.chartAndCompare"></md-switch>
+		<!--  <span>
+				<a class="md-primary wi-no-underline" ma-tr="otomaticaGraphic.campusView.pue"></a>  :
+		    	<ma-point-value ng-if="$ctrl.pue"
+		    		style="cursor: pointer;" 
+		    		point-xid="{{$ctrl.pue}}"
+		    		enable-popup="left"
+		    		hide-event-indicator="true"
+		    		flash-on-change="true">	
+		    	</ma-point-value>
+			</span>
+			<span>
+				<a class="md-primary wi-no-underline"ma-tr="otomaticaGraphic.campusView.outsideTemp"></a>  :
+		    	<ma-point-value ng-if="$ctrl.outsideTemperature"
+		    		style="cursor: pointer;" 
+		    		point-xid="{{$ctrl.outsideTemperature}}"
+		    		hide-event-indicator="true"
+		    		enable-popup="left"
+		    		flash-on-change="true">
+	    		</ma-point-value>
+			</span>
+		-->
+		</div>
+	</div>
+
+	<div layout="column" layout-gt-md="row" layout-gt-lg="row" flex="noshrink">
+
+	    <md-card flex>
+	        <md-toolbar class="md-hue-3">
+	            <div class="md-toolbar-tools" ma-tr="otomaticaGraphic.campusView.floors"></div>
+	        </md-toolbar>
+		 	<md-card-content layout="column">
+	        	<md-table-container flex>
+				    <table md-table>
+				        <thead md-head>
+				        <tr md-row>
+				        	<th md-column ma-tr="otomaticaGraphic.campusView.floor"></th>
+				        	<th md-column ma-tr="ui.app.events" class="ma-narrow-column"></th>
+				            <th md-column 
+				            	ng-repeat="i in [] | maRange: 0 : $ctrl.systemCount-1 : 1" 
+				            	ng-if="$ctrl['floorSystem'+i+'title']"
+				            	ng-bind="$ctrl['floorSystem'+i+'title']">
+				            </th>
+				        </tr>
+				        </thead>
+				        <tbody md-body>
+					        <tr md-row md-auto-select="false" ng-repeat="floor in $ctrl.floors">
+					        	<td md-cell style="white-space: nowrap;">
+					        		<a class="wi-no-underline"
+						        		ng-click="$root.navigate($ctrl.floorTag, floor)"
+						        		ng-bind="floor">
+						        	</a>
+					        	</td>
+					        	<td md-cell class="ma-narrow-column">
+				        		   	<wi-active-events 
+				        		   		popup-title="floor"
+					            		point-query="eq(tags.{{$ctrl.campusTag}},{{$ctrl.campusValue}})&eq(tags.{{$ctrl.floorTag}},{{floor}})">
+					            	</wi-active-events>
+					        	</td>
+					        	<td md-cell 
+					        		ng-repeat="i in [] | maRange: 0 : $ctrl.systemCount-1 : 1" 
+				            		ng-if="$ctrl['floorSystem'+i+'title']">
+					            	<wi-active-events 
+					            		ng-if="$ctrl['floorSystem'+i+'query']"
+					            		popup-title="floor + ' - ' + $ctrl['floorSystem'+i+'title']"
+					            		icon="{{$ctrl['floorSystem'+i+'icon'] || 'flag'}}"
+					            		point-query="eq(tags.{{$ctrl.campusTag}},{{$ctrl.campusValue}})&eq(tags.{{$ctrl.floorTag}},{{floor}})&{{$ctrl['floorSystem'+i+'query']}}">
+					            	</wi-active-events>
+					            </td>
+					        </tr>
+				        </tbody>
+				    </table>
+				</md-table-container>
+	        </md-card-content>
+	    </md-card>
+ 
+	    <md-card>
+	        <md-toolbar class="md-hue-3">
+	            <div class="md-toolbar-tools" ma-tr="otomaticaGraphic.campusView.systems"></div>
+	        </md-toolbar>
+	        <md-card-content layout>
+	        	<md-table-container flex>
+				    <table md-table>
+				        <thead md-head>
+				        <tr md-row>
+				        	<th md-column ma-tr="otomaticaGraphic.campusView.system"></th>
+				            <th md-column ma-tr="ui.app.events" class="ma-narrow-column"></th>
+				        </tr>
+				        </thead>
+				        <tbody md-body>
+					        <tr md-row md-auto-select="false" ng-if="$ctrl['system'+systemIndex+'title']"
+					        	ng-repeat="systemIndex in [] | maRange: 0 : $ctrl.systemCount-1 : 1">
+					        	<td md-cell style="white-space: nowrap;" ng-bind="$ctrl['system'+systemIndex+'title']"></td>
+					        	<td md-cell class="ma-narrow-column">
+					            	<wi-active-events 
+					            		ng-if="$ctrl['system'+systemIndex+'query'] && $ctrl.campusTag && $ctrl.campusValue"
+					            		popup-title="$ctrl['system'+systemIndex+'title']"
+					            		icon="{{$ctrl['system'+systemIndex+'icon'] || 'flag'}}"
+					            		point-query="{{$ctrl['system'+systemIndex+'query']}}&eq(tags.{{$ctrl.campusTag}},{{$ctrl.campusValue}})">
+					            	</wi-active-events>
+					            </td>
+					        </tr>
+				        </tbody>
+				    </table>
+				</md-table-container>
+	        </md-card-content>
+	    </md-card>
+
+	</div>
+
+	<div layout="column" layout-gt-md="row" layout-gt-lg="row" flex="noshrink">
+<!--
+	    <md-card>
+	        <md-toolbar class="md-hue-3">
+	            <div class="md-toolbar-tools" ma-tr="otomaticaGraphic.campusView.loads"></div>
+	        </md-toolbar>
+	        <md-card-content layout>
+	        	<md-table-container flex>
+				    <table md-table>
+				        <thead md-head>
+				        <tr md-row>
+				        	<th md-column ma-tr="otomaticaGraphic.campusView.type"></th>
+				            <th md-column md-numeric ng-repeat="type in $ctrl.loadTypes" ma-tr="otomaticaGraphic.campusView.loadTypes.{{type}}"></th>
+				        </tr>
+				        </thead>
+				        <tbody md-body>
+					        <tr md-row md-auto-select="false">
+					        	<td md-cell ma-tr="otomaticaGraphic.campusView.design"></td>
+					            <td md-cell ng-repeat="type in $ctrl.loadTypes" ng-bind="$ctrl['load'+type+'Design']"></td>
+					        </tr>
+					        <tr md-row md-auto-select="false">
+					        	<td md-cell ma-tr="otomaticaGraphic.campusView.present"></td>
+					            <td md-cell ng-repeat="type in $ctrl.loadTypes">
+					            	<ma-point-value ng-if="$ctrl['load'+type+'Present']"
+					            		style="cursor: pointer;" 
+					            		class="wi-fix-fab"
+					            		point-xid="{{$ctrl['load'+type+'Present']}}"
+					            		enable-popup="{{$index ? 'left' : 'right'}}"
+					            		hide-event-indicator="true"
+					            		flash-on-change="true">
+					            	</ma-point-value>
+					            </td>
+					        </tr>
+					        <tr md-row md-auto-select="false">
+					        	<td md-cell ma-tr="otomaticaGraphic.campusView.rate"></td>
+					            <td md-cell ng-repeat="type in $ctrl.loadTypes">
+					            	<ma-point-value ng-if="$ctrl['load'+type+'Rate']"
+					            		style="cursor: pointer;" 
+					            		class="wi-fix-fab"
+					            		point-xid="{{$ctrl['load'+type+'Rate']}}"
+					            		enable-popup="{{$index ? 'left' : 'right'}}"
+					            		hide-event-indicator="true"
+					            		flash-on-change="true">
+					            	</ma-point-value>
+					            </td>
+					        </tr>
+				        </tbody>
+				    </table>
+				</md-table-container>
+	        </md-card-content>
+	    </md-card>
+  -->
+	     <md-card flex>
+	        <md-toolbar class="md-hue-3">
+	            <div class="md-toolbar-tools" ma-tr="otomaticaGraphic.campusView.rooms"></div>
+	        </md-toolbar>
+	        <md-card-content layout>
+	        	<md-table-container flex>
+  				    <table md-table>
+				        <thead md-head>
+				        <tr md-row>
+				        	<th md-column ma-tr="otomaticaGraphic.campusView.room"></th>
+				            <th md-column class="ma-narrow-column"
+				            	ng-repeat="i in [] | maRange: 0 : $ctrl.systemCount-1 : 1" 
+				            	ng-if="$ctrl['roomSystem'+i+'title']"
+				            	ng-bind="$ctrl['roomSystem'+i+'title']">
+				            </th>
+				        </tr>
+				        </thead>
+				        <tbody md-body ng-repeat="floor in $ctrl.floors" ng-if="$ctrl.rooms[floor].length">
+				        	<tr md-row md-auto-select="false" ng-repeat="room in $ctrl.rooms[floor]">
+    							<td md-cell style="white-space: nowrap;">
+					        		<a class="wi-no-underline"
+						        		ng-click="$root.navigate($ctrl.floorTag, floor)"
+						        		ng-bind="floor">
+					        		</a> 
+					        		<md-icon>chevron_right</md-icon> 
+					        		<span ng-bind="room"></span>
+					        	</td>
+					        	<td md-cell class="ma-narrow-column"
+					        		ng-repeat="i in [] | maRange: 0 : $ctrl.systemCount-1 : 1" 
+				            		ng-if="$ctrl['roomSystem'+i+'title']">
+					            	<wi-active-events 
+					            		ng-if="$ctrl['roomSystem'+i+'query']"
+					            		popup-title="room + ' - ' + $ctrl['roomSystem'+i+'title']"
+					            		icon="{{$ctrl['roomSystem'+i+'icon'] || 'flag'}}"
+					            		point-query="eq(tags.{{$ctrl.campusTag}},{{$ctrl.campusValue}})&eq(tags.{{$ctrl.roomTag}},{{room}})&{{$ctrl['roomSystem'+i+'query']}}">
+					            	</wi-active-events>
+					            </td>
+				        	</tr>
+				        </tbody>
+				    </table>
+				</md-table-container>
+	        </md-card-content>
+	    </md-card>
+
+	</div>
+
+	<div ng-repeat="chartIndex in [] | maRange: 0 : $ctrl.chartCount-1 : 1" ng-if="chartsEnable && chartPoints[chartIndex].length">
+
+		<div layout="column" layout-gt-md="row" layout-gt-lg="row" flex="noshrink" ng-if="$even && !$last">
+		    <md-card flex="nogrow" flex-gt-md="50" flex-gt-lg="50" ng-repeat="subIndex in [] | maRange: 0 : 1 : 1"
+		    	ng-if="(subIndex == 0 || chartIndex + 2 < $ctrl.chartCount) ">
+		        <md-toolbar class="md-hue-3">
+		            <div class="md-toolbar-tools" ng-bind="$ctrl['chart'+ (chartIndex + subIndex) +'title']"></div>
+		        </md-toolbar>
+		        <md-card-content layout="column">
+
+        			<ma-point-values
+        				ng-if="dateBar.rollupType == rollup[chartIndex + subIndex].type"
+						points="checkPoints[chartIndex + subIndex]"
+						values="chartValues[chartIndex + subIndex]"
+						from="dateBar.from" 
+					    to="dateBar.to" 
+					    simplify-tolerance="dateBar.simplifyTolerance"
+					    rollup="{{dateBar.rollupType}}" 
+					    rollup-interval="{{dateBar.rollupIntervals + ' ' + dateBar.rollupIntervalPeriod}}">
+					</ma-point-values>
+					<wi-rollup-check points="chartPoints[chartIndex + subIndex]" 
+						rollup="rollup[chartIndex + subIndex]" 
+						chart-points="checkPoints[chartIndex + subIndex]">
+					</wi-rollup-check>
+
+					<!--cursor-sync-id="smallCharts"-->
+		        	<ma-serial-chart flex 
+					    style="min-height: 350px;"
+		        		ng-if="checkPoints[chartIndex + subIndex].length"
+					    options="chartOptions[chartIndex + subIndex]"
+					    graph-options="chartPoints[chartIndex + subIndex]"
+					    points="chartPoints[chartIndex + subIndex]"
+					    values="chartValues[chartIndex + subIndex]" 
+					    legend="true" 
+					    export="false">
+					</ma-serial-chart>
+
+		        </md-card-content>
+		    </md-card>
+		</div>
+
+		<div layout="column" layout-gt-md="row" layout-gt-lg="row" flex="noshrink" ng-if="$last">
+		    <md-card flex>
+		        <md-toolbar class="md-hue-3">
+		            <div class="md-toolbar-tools" ng-bind="$ctrl['chart'+chartIndex+'title']"></div>
+		        </md-toolbar>
+		        <md-card-content layout="column">
+
+        			<ma-point-values
+        				ng-if="dateBar.rollupType == rollup[chartIndex].type"
+						points="checkPoints[chartIndex]"
+						values="chartValues[chartIndex]"
+						from="dateBar.from" 
+					    to="dateBar.to" 
+					    simplify-tolerance="dateBar.simplifyTolerance"
+					    rollup="{{dateBar.rollupType}}" 
+					    rollup-interval="{{dateBar.rollupIntervals + ' ' + dateBar.rollupIntervalPeriod}}">
+					</ma-point-values>
+					<wi-rollup-check points="chartPoints[chartIndex]" 
+						rollup="rollup[chartIndex]" 
+						chart-points="checkPoints[chartIndex]">
+					</wi-rollup-check>
+					
+		        	<ma-serial-chart flex
+					    style="min-height: 350px;"
+					    ng-if="checkPoints[chartIndex].length"
+					    options="chartOptions[chartIndex]"
+					    graph-options="chartPoints[chartIndex]"
+					    points="chartPoints[chartIndex]"
+					    values="chartValues[chartIndex]" 
+					    legend="true" 
+					    export="false">
+					</ma-serial-chart>
+
+		        </md-card-content>
+		    </md-card>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,1468 @@
+<ma-get-point-value ng-repeat="(key, value) in points" point="value"></ma-get-point-value>
+<md-tabs md-left-tabs>
+    <md-tab label="AHU Detaylari">
+        <md-card flex="">
+            <div layout="column">
+                <md-toolbar class="md-hue-3">
+                    <div class="md-toolbar-tools" ng-bind="'Ekipman Gorunum'"></div>
+                </md-toolbar>
+                <md-card-content>
+					<span>{{outFanAnimTime=(300-(2*points.outfanspeed.value | number:0));""}}</span>
+					<span>{{spFanAnimTime=(300-(2*points.spfanspeed.value | number:0));""}}</span> 
+					<span>{{humAnimTime=700;""}}</span> 
+					<span>{{dampAnimTime=1000;animDelayTime=0;""}}</span> 
+                    <wi-svg ng-include="$ctrl.diagram">
+                    
+	                    <!-- Fan Animation Section -->
+						<div ma-selector="#Fan1_11" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan1_12" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan1_13" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan1_14" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan1_15" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*4 + 'ms infinite' : 'unset'}"></div>
+					    
+					    <div ma-selector="#Fan1_21" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan1_22" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan1_23" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan1_24" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan1_25" ng-style="{'animation' : points.outfanspeed.value ? 'fanRotate ' + outFanAnimTime + 'ms linear ' + (outFanAnimTime/5)*4 + 'ms infinite' : 'unset'}"></div>
+		    
+		    			<div ma-selector="#Fan2_11" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_12" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_13" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_14" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_15" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*4 + 'ms infinite' : 'unset'}"></div>
+					    
+					    <div ma-selector="#Fan2_21" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_22" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_23" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_24" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_25" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*4 + 'ms infinite' : 'unset'}"></div>
+					    
+					    <div ma-selector="#Fan2_31" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_32" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_33" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_34" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_35" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*4 + 'ms infinite' : 'unset'}"></div>
+					    
+					    <div ma-selector="#Fan2_41" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_42" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_43" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_44" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Fan2_45" ng-style="{'animation' : points.spfanspeed.value ? 'fanRotate ' + spFanAnimTime + 'ms linear ' + (spFanAnimTime/5)*4 + 'ms infinite' : 'unset'}"></div>
+					    
+					    <!-- Humidifier Animation Section -->
+					    <div ma-selector="#Hum_11" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_12" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_13" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_14" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_15" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*4 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_16" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*5 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_17" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*6 + 'ms infinite' : 'unset'}"></div>
+					    
+					    <div ma-selector="#Hum_21" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_22" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_23" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_24" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_25" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*4 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_26" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*5 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_27" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*6 + 'ms infinite' : 'unset'}"></div>
+
+					    <div ma-selector="#Hum_31" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_32" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_33" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_34" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_35" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*4 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_36" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*5 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_37" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*6 + 'ms infinite' : 'unset'}"></div>
+
+					    <div ma-selector="#Hum_41" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_42" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_43" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_44" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_45" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*4 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_46" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*5 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_47" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*6 + 'ms infinite' : 'unset'}"></div>
+
+					    <div ma-selector="#Hum_51" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*0 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_52" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*1 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_53" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*2 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_54" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*3 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_55" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*4 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_56" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*5 + 'ms infinite' : 'unset'}"></div>
+					    <div ma-selector="#Hum_57" ng-style="{'animation' : points.hummode.value == '0' ? 'humWorking ' + humAnimTime + 'ms linear ' + (humAnimTime/7)*6 + 'ms infinite' : 'unset'}"></div>
+					    
+					    <!-- Damper Animation Section -->
+						<div ma-selector="#Blades_outbypsdamp_1, #Blades_returnbypsdamp_1" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampShow ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*9 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*0 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_outbypsdamp_2, #Blades_returnbypsdamp_2" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*8 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*1 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_outbypsdamp_3, #Blades_returnbypsdamp_3" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*7 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*2 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_outbypsdamp_4, #Blades_returnbypsdamp_4" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*6 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*3 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_outbypsdamp_5, #Blades_returnbypsdamp_5" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*5 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*4 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_outbypsdamp_6, #Blades_returnbypsdamp_6" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*4 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*5 + 'ms forwards' : 'dampShow 1s infinite'}"></div>
+						<div ma-selector="#Blades_outbypsdamp_7, #Blades_returnbypsdamp_7" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*3 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*6 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_outbypsdamp_8, #Blades_returnbypsdamp_8" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*2 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*7 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_outbypsdamp_9, #Blades_returnbypsdamp_9" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*1 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*8 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_outbypsdamp_10, #Blades_returnbypsdamp_10" ng-style="{'animation' : points.bypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*0 + 'ms forwards' : points.bypsdampopen.value == '0' ? 'dampShow ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*9 + 'ms forwards' : 'unset'}"></div>
+						
+						<div ma-selector="#Blades_shutoffdamp_1" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampShow ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*9 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*0 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_shutoffdamp_2" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*8 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*1 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_shutoffdamp_3" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*7 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*2 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_shutoffdamp_4" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*6 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*3 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_shutoffdamp_5" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*5 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*4 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_shutoffdamp_6" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*4 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*5 + 'ms forwards' : 'dampShow 1s infinite'}"></div>
+						<div ma-selector="#Blades_shutoffdamp_7" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*3 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*6 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_shutoffdamp_8" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*2 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*7 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_shutoffdamp_9" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*1 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*8 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_shutoffdamp_10" ng-style="{'animation' : points.shutoffdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*0 + 'ms forwards' : points.shutoffdampopen.value == '0' ? 'dampShow ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*9 + 'ms forwards' : 'unset'}"></div>
+						
+						<div ma-selector="#Blades_condbypsdamp_1, #Blades_evapbypsdamp_1" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampShow ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*9 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*0 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_condbypsdamp_2, #Blades_evapbypsdamp_2" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*8 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*1 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_condbypsdamp_3, #Blades_evapbypsdamp_3" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*7 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*2 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_condbypsdamp_4, #Blades_evapbypsdamp_4" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*6 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*3 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_condbypsdamp_5, #Blades_evapbypsdamp_5" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*5 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*4 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_condbypsdamp_6, #Blades_evapbypsdamp_6" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*4 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*5 + 'ms forwards' : 'dampShow 1s infinite'}"></div>
+						<div ma-selector="#Blades_condbypsdamp_7, #Blades_evapbypsdamp_7" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*3 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*6 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_condbypsdamp_8, #Blades_evapbypsdamp_8" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*2 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*7 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_condbypsdamp_9, #Blades_evapbypsdamp_9" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*1 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*8 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_condbypsdamp_10, #Blades_evapbypsdamp_10" ng-style="{'animation' : points.evapcondbypsdampopen.value == '1' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*0 + 'ms forwards' : points.evapcondbypsdampopen.value == '0' ? 'dampShow ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*9 + 'ms forwards' : 'unset'}"></div>
+						
+						<div ma-selector="#Blades_returndamp_1, #Blades_supplydamp_1" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampShow ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*9 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*0 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_returndamp_2, #Blades_supplydamp_2" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*8 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*1 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_returndamp_3, #Blades_supplydamp_3" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*7 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*2 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_returndamp_4, #Blades_supplydamp_4" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*6 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*3 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_returndamp_5, #Blades_supplydamp_5" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*5 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*4 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_returndamp_6, #Blades_supplydamp_6" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*4 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*5 + 'ms forwards' : 'dampShow 1s infinite'}"></div>
+						<div ma-selector="#Blades_returndamp_7, #Blades_supplydamp_7" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*3 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*6 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_returndamp_8, #Blades_supplydamp_8" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*2 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*7 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_returndamp_9, #Blades_supplydamp_9" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*1 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampClose ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*8 + 'ms forwards' : 'unset'}"></div>
+						<div ma-selector="#Blades_returndamp_10, #Blades_supplydamp_10" ng-style="{'animation' : points.sprtndampalarm.value == '0' ? 'dampOpen ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*0 + 'ms forwards' : points.sprtndampalarm.value == '1' ? 'dampShow ' + dampAnimTime + 'ms linear ' + (dampAnimTime/10)*9 + 'ms forwards' : 'unset'}"></div>                        
+						
+						<!--Numeric Values-->
+                        <div ma-selector="#Text_supplytemp tspan:nth-child(1)" ng-bind="points.spairtemp.renderedValue"></div>
+                        <div ma-selector="#Text_supplyairflow tspan:nth-child(1)" ng-bind="points.spvolflow.renderedValue"></div>
+                        <div ma-selector="#Text_returntemp tspan:nth-child(1)" ng-bind="points.rtntemp.renderedValue"></div>
+                        <div ma-selector="#Text_returnhum tspan:nth-child(1)" ng-bind="(points.rtnhum.value | number:1) + ' %RH'"></div>
+                        <div ma-selector="#Text_outairfilterpress tspan:nth-child(1)" ng-bind="points.outfilterpressure.renderedValue"></div>
+                        <div ma-selector="#Text_returnairfilterpress tspan:nth-child(1)" ng-bind="points.rtnfilterpressure.renderedValue"></div>
+                        <div ma-selector="#Text_outairhum tspan:nth-child(1)" ng-bind="(points.outairhum.value | number:1) + ' %RH'"></div>
+                        <div ma-selector="#Text_outairtemp tspan:nth-child(1)" ng-bind="points.outairtemp.renderedValue"></div>
+                        <div ma-selector="#Text_outairflow tspan:nth-child(1)" ng-bind="points.outairflow.renderedValue"></div>
+                        <div ma-selector="#Text_diffpress tspan:nth-child(1)" ng-bind="points.spfanductpressure.renderedValue"></div>
+
+                        <!--Alarms-->
+                        <div ma-selector="#Maint_outairfilter" ng-if="points.outfiltermaintreq.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Maint_returnairfilter" ng-if="points.rtnfiltermaintreq.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_comp1" ng-if="points.comp1alarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Maint_comp1" ng-if="points.comp1maintreq.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_comp2" ng-if="points.comp2alarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Maint_comp2" ng-if="points.comp2maintreq.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_outbypsdamp" ng-if="points.bypsdampalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_outbypsdamp" ng-if="points.bypsdamp.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_returnbypsdamp" ng-if="points.bypsdampalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_returnbypsdamp" ng-if="points.bypsdamp.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_shutoffdamp" ng-if="points.shutoffdampalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_shutoffdamp" ng-if="points.shutoffdampmanuel.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_condbypsdamp" ng-if="points.evapcondbypsdampalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_condbypsdamp" ng-if="points.evapcondbypsdampmanuel.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_evapbypsdamp" ng-if="points.evapcondbypsdampalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_evapbypsdamp" ng-if="points.evapcondbypsdampmanuel.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_returndamp" ng-if="points.sprtndampalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_returndamp" ng-if="points.sprtndampmanuel.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_supplydamp" ng-if="points.sprtndampalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_supplydamp" ng-if="points.sprtndampmanuel.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_outfan" ng-if="points.outfanalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Maint_outfan" ng-if="points.outfanmaintreq.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_outfan" ng-if="points.outfanmanuel.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_supplyfan" ng-if="points.spfanalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Maint_supplyfan" ng-if="points.spfanmaintreq.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_supplyfan" ng-if="points.spfanmanuel.value" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_hum" ng-if="points.humalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_hum" ng-if="points.hummode.value == '6'" class="ot-throb-opacity"></div>
+
+                        <div ma-selector="#Alarm_waterhum" ng-if="points.waterhumalarm.value" class="ot-throb-opacity"></div>
+                        <div ma-selector="#Manuel_waterhum" ng-if="points.waterhumman.value" class="ot-throb-opacity"></div>
+
+                        <!--Humidifiers-->
+                        <!--Electric Humidifier-->
+                        <div
+                            ma-selector="#Text_humstatus tspan:nth-child(1)"
+                            ng-bind="points.hummode.renderedValue"
+                            ng-style="{'fill' : points.hummode.value == '0' ? '#25a500' : (points.hummode.value == '1' || points.hummode.value == '6') ? 'red' : 'gray'}"
+                        ></div>
+                        <div ma-selector="#Rect_humidifier" ng-if="points.hummode"></div>
+                        <div ma-selector="#Device_humidifier" ng-if="points.hummode"></div>
+                        <div ma-selector="#Humidifier_status" ng-if="points.hummode.value == '0'"></div>
+                        <div ma-selector="#Bar_humpercent" ng-attr-stroke-dashoffset="{{((100-points.humpercent.value)/100)*220}}"></div>
+                        <div ma-selector="#Text_humpercent tspan" ng-bind="points.humpercent.value | number:1"></div>
+                        <!--Water Humidifier-->
+                        <div ma-selector="#Device_WaterHumidifier" ng-if="points.waterhumoff"></div>
+                        <div ma-selector="#Rect_waterhumidifier" ng-if="points.waterhumoff"></div>
+                        <div
+                            ma-selector="#Text_waterhumstatus tspan:nth-child(1)"
+                            ng-bind="points.waterhumoff.value ? points.waterhumoff.renderedValue : points.waterhumman.value ? points.waterhumman.renderedValue : points.waterhumauto.renderedValue"
+                            ng-style="{'fill' : points.waterhumauto.value ? '#25a500' : 'gray'}"
+                        ></div>
+                        <div ma-selector="#Blades_waterhumidifieron" ng-if="points.waterhumvalvepos.value > 0"></div>
+                        <div ma-selector="#Led_waterhumidifier circle:nth-child(2)" ng-style="{'fill' : points.waterhumvalvepos.value > 0 ? 'lime' : 'none'}"></div>
+                        <div ma-selector="#Bar_waterhumvalvepos" ng-attr-stroke-dashoffset="{{((100-points.waterhumvalvepos.value)/100)*220}}"></div>
+                        <div ma-selector="#Text_waterhumvalvepos tspan" ng-bind="points.waterhumvalvepos.value | number:1"></div>
+
+                        <!--Fan Status'-->
+                        <div ma-selector="#Bar_supplyfanspeed" ng-attr-stroke-dashoffset="{{((100-points.spfanspeed.value)/100)*220}}"></div>
+                        <div ma-selector="#Text_supplyfanspeed tspan" ng-bind="points.spfanspeed.value | number:1"></div>
+                        <div ma-selector="#Bar_outfanspeed" ng-attr-stroke-dashoffset="{{((100-points.outfanspeed.value)/100)*220}}"></div>
+                        <div ma-selector="#Text_outfanspeed tspan" ng-bind="points.outfanspeed.value | number:1"></div>
+
+                        <!--Compressor Status'-->
+                        <div ma-selector="#Bar_comp1" ng-attr-stroke-dashoffset="{{((100-points.compopstatusper.value)/100)*220}}"></div>
+                        <div ma-selector="#Text_comp1 tspan" ng-bind="points.compopstatusper.value | number:1"></div>
+                        <div ma-selector="#Blue_comp1" ng-if="points.compopstatusper.value > 0"></div>
+                        <div ma-selector="#Bar_comp2" ng-attr-stroke-dashoffset="{{points.comp2on.value ? '0' : '220'}}"></div>
+                        <div ma-selector="#Text_comp2 tspan" ng-bind="(points.comp2on.value ? 100 : 0) | number:1"></div>
+                        <div ma-selector="#Blue_comp2" ng-if="points.comp2on.value"></div>
+
+                        <!--Damper Status'-->
+                        <div ma-selector="#Text_outbypsdamp text tspan" ng-bind="points.bypsdampopen.renderedValue" ng-style="{'fill' : points.bypsdampopen.value ? '#25a500' : 'gray'}"></div>
+                        <div ma-selector="#Text_returnbypsdamp text tspan" ng-bind="points.bypsdampopen.renderedValue" ng-style="{'fill' : points.bypsdampopen.value ? '#25a500' : 'gray'}"></div>
+                        <div ma-selector="#Text_shutoffdamp text tspan" ng-bind="points.shutoffdampopen.renderedValue" ng-style="{'fill' : points.shutoffdampopen.value ? '#25a500' : 'gray'}"></div>
+
+                        <div ma-selector="#Text_supplydamp text tspan" ng-bind="points.sprtndampalarm.value ? 'Damper Kapali' : 'Damper Acik'" ng-style="{'fill' : points.sprtndampalarm.value ? 'gray' : '#25a500'}"></div>
+                        <div ma-selector="#Text_returndamp text tspan" ng-bind="points.sprtndampalarm.value ? 'Damper Kapali' : 'Damper Acik'" ng-style="{'fill' : points.sprtndampalarm.value ? 'gray' : '#25a500'}"></div>
+
+                        <div ma-selector="#Text_evapbypsdamp text tspan" ng-bind="points.evapcondbypsdampopen.renderedValue" ng-style="{'fill' : points.evapcondbypsdampopen.value ? '#25a500' : 'gray'}"></div>
+                        <div ma-selector="#Text_condbypsdamp text tspan" ng-bind="points.evapcondbypsdampopen.renderedValue" ng-style="{'fill' : points.evapcondbypsdampopen.value ? '#25a500' : 'gray'}"></div>
+
+                        <!--Unit Status Table-->
+                        <div ma-selector="#Led_unitstatus circle:nth-child(2)" ng-style="{'fill' : points.unitstatus.value ? 'lime' : 'none'}"></div>
+                        <div
+                            ma-selector="#Text_unitswstatus text tspan"
+                            ng-class="'table-value'"
+                            ng-bind="points.unitswstatus.renderedValue"
+                            ng-style="{'fill' : points.unitswstatus.value == 1 ? '#25a500' : points.unitswstatus.value == 2 ? 'gray' : 'red'}"
+                        ></div>
+                        <div
+                            ma-selector="#Text_unitmode text tspan"
+                            ng-class="'table-value'"
+                            ng-bind="points.unitmode.renderedValue"
+                            ng-style="{'fill' : points.unitmode.value == 1 ? '#25a500' : points.unitmode.value == 2 ? '#9ff190' : '#266fcf'}"
+                        ></div>
+                        <div ma-selector="#Mode_freecooling" ng-if="points.unitmode.value == 1"></div>
+                        <div ma-selector="#Mode_freedx" ng-if="points.unitmode.value == 2"></div>
+                        <div ma-selector="#Mode_onlydx" ng-if="points.unitmode.value == 3"></div>
+                        <div ma-selector="#Text_commerror text tspan" ng-class="'table-value'" ng-bind="points.commerror.renderedValue" ng-style="{'fill' : points.commerror.renderedValue == 'Normal' ? '#25a500' : 'red'}"></div>
+                        <div ma-selector="#Text_genalarm text tspan" ng-class="'table-value'" ng-bind="points.genalarm.renderedValue" ng-style="{'fill' : points.genalarm.renderedValue == 'Normal' ? '#25a500' : 'red'}"></div>
+                    
+                    	<!-- Arrow Animation Section -->
+                    	<div ma-selector="#Arrows_returnair" ng-if="points.spfanspeed.value"></div>
+                    	<div ma-selector="#Arrows_freshair" ng-if="points.outfanspeed.value"></div>
+                    	
+                    	<div ma-selector="#PathReturnAir_modeDX" class="d-none"></div>
+				        <div ma-selector="#PathReturnAir_modeFC" class="d-none"></div>
+				        <div ma-selector="#PathFreshAir_modeDX" class="d-none"></div>
+				        <div ma-selector="#PathFreshAir_modeFC" class="d-none"></div>
+				        <div ma-selector="#PathReturnAir_modeFCDX_byps" class="d-none"></div>
+				        <div ma-selector="#PathReturnAir_modeFCDX_rek" class="d-none"></div>
+				        <div ma-selector="#PathFreshAir_modeFCDX_byps" class="d-none"></div>
+				        <div ma-selector="#PathFreshAir_modeFCDX_rek" class="d-none"></div>
+				        
+				        <div ma-selector="#TransitionArrow_returnAir" ng-if="(points.unitmode.value == 1 || points.unitmode.value == 2)"></div>
+				        <div ma-selector="#TransitionArrow_returnAir_FCDX" ng-if="false"></div>
+				        <div ma-selector="#TransitionArrow_freshAir" ng-if="(points.unitmode.value == 1 || points.unitmode.value == 2)"></div>
+				        
+				        <div ma-selector="#Blades_evapon" ng-if="(points.unitmode.value == 2 || points.unitmode.value == 3)"></div>
+				        <div ma-selector="#Blades_evapoff" ng-if="!(points.unitmode.value == 2 || points.unitmode.value == 3)"></div>
+				        
+				        <div ma-selector="#Blades_kondenseron" ng-if="(points.unitmode.value == 2 || points.unitmode.value == 3)"></div>
+				        <div ma-selector="#Blades_kondenseroff" ng-if="!(points.unitmode.value == 2 || points.unitmode.value == 3)"></div>
+				        
+				        <div ma-selector="#returnAirArrow01" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow02" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow03" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow04" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow05" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow06" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow07" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow08" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow09" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow10" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        
+				        <div ma-selector="#returnAirArrow01 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        <div ma-selector="#returnAirArrow02 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        <div ma-selector="#returnAirArrow03 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        <div ma-selector="#returnAirArrow04 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        <div ma-selector="#returnAirArrow05 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        <div ma-selector="#returnAirArrow06 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        <div ma-selector="#returnAirArrow07 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        <div ma-selector="#returnAirArrow08 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        <div ma-selector="#returnAirArrow09 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        <div ma-selector="#returnAirArrow10 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
+				        
+				        <div ma-selector="#returnAirArrow01 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#returnAirArrow02 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#returnAirArrow03 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#returnAirArrow04 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#returnAirArrow05 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#returnAirArrow06 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#returnAirArrow07 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#returnAirArrow08 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#returnAirArrow09 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#returnAirArrow10 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
+				        
+				        <div ma-selector="#freshAirArrow01" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow02" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow03" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow04" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow05" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow06" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow07" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow08" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow09" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow10" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				        
+				        <div ma-selector="#freshAirArrow01 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#freshAirArrow02 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#freshAirArrow03 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#freshAirArrow04 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#freshAirArrow05 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#freshAirArrow06 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#freshAirArrow07 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#freshAirArrow08 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#freshAirArrow09 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        <div ma-selector="#freshAirArrow10 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
+				        
+				        <div ma-selector="#freshAirArrow01 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: 0s"></div>
+				        <div ma-selector="#freshAirArrow02 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -2s"></div>
+				        <div ma-selector="#freshAirArrow03 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: -4s"></div>
+				        <div ma-selector="#freshAirArrow04 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -6s"></div>
+				        <div ma-selector="#freshAirArrow05 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: -8s"></div>
+				        <div ma-selector="#freshAirArrow06 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -10s"></div>
+				        <div ma-selector="#freshAirArrow07 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: -12s"></div>
+				        <div ma-selector="#freshAirArrow08 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -14s"></div>
+				        <div ma-selector="#freshAirArrow09 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: -16s"></div>
+				        <div ma-selector="#freshAirArrow10 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -18s"></div>
+				        
+				        <div ma-selector="#freshAirArrow01, #freshAirArrow01 line, #freshAirArrow01 polygon, #freshAirArrow01 > g:first-child, #returnAirArrow01, #returnAirArrow01 line, #returnAirArrow01 polygon, #returnAirArrow01 > g:first-child, #returnAirArrow01 > g:nth-child(2)" style="animation-delay: 0s"></div>
+				        <div ma-selector="#freshAirArrow02, #freshAirArrow02 line, #freshAirArrow02 polygon, #freshAirArrow02 > g:first-child, #returnAirArrow02, #returnAirArrow02 line, #returnAirArrow02 polygon, #returnAirArrow02 > g:first-child, #returnAirArrow02 > g:nth-child(2)" style="animation-delay: -3s"></div>
+				        <div ma-selector="#freshAirArrow03, #freshAirArrow03 line, #freshAirArrow03 polygon, #freshAirArrow03 > g:first-child, #returnAirArrow03, #returnAirArrow03 line, #returnAirArrow03 polygon, #returnAirArrow03 > g:first-child, #returnAirArrow03 > g:nth-child(2)" style="animation-delay: -6s"></div>
+				        <div ma-selector="#freshAirArrow04, #freshAirArrow04 line, #freshAirArrow04 polygon, #freshAirArrow04 > g:first-child, #returnAirArrow04, #returnAirArrow04 line, #returnAirArrow04 polygon, #returnAirArrow04 > g:first-child, #returnAirArrow04 > g:nth-child(2)" style="animation-delay: -9s"></div>
+				        <div ma-selector="#freshAirArrow05, #freshAirArrow05 line, #freshAirArrow05 polygon, #freshAirArrow05 > g:first-child, #returnAirArrow05, #returnAirArrow05 line, #returnAirArrow05 polygon, #returnAirArrow05 > g:first-child, #returnAirArrow05 > g:nth-child(2)" style="animation-delay: -12s"></div>
+				        <div ma-selector="#freshAirArrow06, #freshAirArrow06 line, #freshAirArrow06 polygon, #freshAirArrow06 > g:first-child, #returnAirArrow06, #returnAirArrow06 line, #returnAirArrow06 polygon, #returnAirArrow06 > g:first-child, #returnAirArrow06 > g:nth-child(2)" style="animation-delay: -15s"></div>
+				        <div ma-selector="#freshAirArrow07, #freshAirArrow07 line, #freshAirArrow07 polygon, #freshAirArrow07 > g:first-child, #returnAirArrow07, #returnAirArrow07 line, #returnAirArrow07 polygon, #returnAirArrow07 > g:first-child, #returnAirArrow07 > g:nth-child(2)" style="animation-delay: -18s"></div>
+				        <div ma-selector="#freshAirArrow08, #freshAirArrow08 line, #freshAirArrow08 polygon, #freshAirArrow08 > g:first-child, #returnAirArrow08, #returnAirArrow08 line, #returnAirArrow08 polygon, #returnAirArrow08 > g:first-child, #returnAirArrow08 > g:nth-child(2)" style="animation-delay: -21s"></div>
+				        <div ma-selector="#freshAirArrow09, #freshAirArrow09 line, #freshAirArrow09 polygon, #freshAirArrow09 > g:first-child, #returnAirArrow09, #returnAirArrow09 line, #returnAirArrow09 polygon, #returnAirArrow09 > g:first-child, #returnAirArrow09 > g:nth-child(2)" style="animation-delay: -24s"></div>
+				        <div ma-selector="#freshAirArrow10, #freshAirArrow10 line, #freshAirArrow10 polygon, #freshAirArrow10 > g:first-child, #returnAirArrow10, #returnAirArrow10 line, #returnAirArrow10 polygon, #returnAirArrow10 > g:first-child, #returnAirArrow10 > g:nth-child(2)" style="animation-delay: -27s"></div>
+                    </wi-svg>
+                </md-card-content>
+            </div>
+        </md-card>
+
+        <!-- Set Noktaları -->
+        <md-card>
+            <md-toolbar class="md-hue-3">
+                <div layout="row" layout-align="start start">
+                    <div class="md-toolbar-tools" ng-bind="'Set Noktalari'"></div>
+                    <div>
+                        <md-button class="md-icon-button md-primary" ng-click="test=true" ng-show="!test" aria-label="Setleme">
+							<md-icon class="material-icons" role="img" aria-hidden="true">edit</md-icon>
+						</md-button>
+						<md-button class="md-icon-button md-warn" ng-click="test=false" ng-show="test" aria-label="Setleme">
+							<md-icon class="material-icons" role="img" aria-hidden="true">edit_off</md-icon>
+						</md-button>
+                    </div>
+                </div>
+            </md-toolbar>
+
+            <div layout="row" layout-align="space-between center">
+                <md-card flex="">
+                    <div layout="column" layout-align="space-between start">
+                        <md-card-content>
+                            <div layout="column" layout-align="space-between start">
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.sptempset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.sptempset" ng-show="test" ng-if="points.sptempset"></ma-set-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.sptempactset" ng-show="!test"></ma-point-value>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </div>
+                </md-card>
+
+                <md-card flex="">
+                    <div layout="column" layout-align="space-between start">
+                        <md-card-content>
+                            <div layout="column" layout-align="space-between start">
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.spductpressureset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.spductpressureset" ng-show="test" ng-if="points.spductpressureset"></ma-set-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.spairpressureactset" ng-show="!test"></ma-point-value>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </div>
+                </md-card>
+            </div>
+        </md-card>
+
+        <!-- Çalışma Saatleri -->
+        <md-card>
+            <md-toolbar class="md-hue-3">
+                <div layout="row" layout-align="start start">
+                    <div class="md-toolbar-tools" ng-bind="'Çalışma Saatleri'"></div>
+                </div>
+            </md-toolbar>
+
+            <div layout="row" layout-align="space-between center">
+                <md-card flex="">
+                    <div layout="column" layout-align="space-between start">
+                        <md-card-content>
+                            <div layout="column" layout-align="space-between start">
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.unithours"></ma-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.comp1ophourscounter"></ma-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.comp2ophourscounter"></ma-point-value>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </div>
+                </md-card>
+
+                <md-card flex="">
+                    <div layout="column" layout-align="space-between start">
+                        <md-card-content>
+                            <div layout="column" layout-align="space-between start">
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.spfanhours"></ma-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.outfanhours"></ma-point-value>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </div>
+                </md-card>
+            </div>
+        </md-card>
+    </md-tab>
+    
+    <md-tab label="Nemlendirici Detaylari" ng-if="points.hummode||points.waterhumoff">
+    	
+    	<!-- Elektrikli Nemlendirici -->
+        <md-card ng-if="points.hummode">
+            <md-toolbar class="md-hue-3">
+                <div layout="row" layout-align="start start">
+                    <div class="md-toolbar-tools" ng-bind="'Elektrikli Nemlemdirici Set'"></div>
+                    <div>
+                        <button class="md-icon-button md-button" ng-click="test=!test" type="button">
+                            <md-icon class="material-icons" role="img" aria-hidden="true">edit</md-icon>
+                        </button>
+                    </div>
+                </div>
+            </md-toolbar>
+
+            <div layout="row" layout-align="space-between center">
+                <md-card flex="">
+                    <div layout="column" layout-align="space-between start">
+                        <md-card-content>
+                            <div layout="column" layout-align="space-between start">
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.statusset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.statusset" ng-show="test" ng-if="points.statusset"></ma-set-point-value>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </div>
+                </md-card>
+            </div>
+        </md-card>
+
+        <md-card ng-if="points.hummode">
+            <md-toolbar class="md-hue-3">
+                <div layout="row" layout-align="start start">
+                    <div class="md-toolbar-tools" ng-bind="'Elektrikli Nemlemdirici Bilgileri'"></div>
+                </div>
+            </md-toolbar>
+
+            <md-card-content>
+                <div layout="row" layout-align="space-between">
+                    <div layout="column" flex="">
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.humstatus"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.humalarm"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.hummode"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.worktime"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.avghum"></ma-point-value>
+                        </div>
+                    </div>
+
+                    <div layout="column" flex="">
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.cylinder1worktime"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.conductivity"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.i"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.steamgen"></ma-point-value>
+                        </div>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+
+		<!-- Sulu Nemlendirici -->
+        <md-card ng-if="points.waterhumalarm">
+            <md-toolbar class="md-hue-3">
+                <div layout="row" layout-align="start start">
+                    <div class="md-toolbar-tools" ng-bind="'Sulu Nemlemdirici Set'"></div>
+                    <div>
+                        <md-button class="md-icon-button md-primary" ng-click="test=true" ng-show="!test" aria-label="Setleme">
+							<md-icon class="material-icons" role="img" aria-hidden="true">edit</md-icon>
+						</md-button>
+						<md-button class="md-icon-button md-warn" ng-click="test=false" ng-show="test" aria-label="Setleme">
+							<md-icon class="material-icons" role="img" aria-hidden="true">edit_off</md-icon>
+						</md-button>
+                    </div>
+                </div>
+            </md-toolbar>
+
+            <div layout="row" layout-align="space-between center">
+                <md-card flex="">
+                    <div layout="column" layout-align="space-between start">
+                        <md-card-content>
+                            <div layout="column" layout-align="space-between start">
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.humset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.humset" ng-show="test" ng-if="points.humset"></ma-set-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.sysoffcommand" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.sysoffcommand" ng-show="test" ng-if="points.sysoffcommand"></ma-set-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.sysautocommand" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.sysautocommand" ng-show="test" ng-if="points.sysautocommand"></ma-set-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.valveposset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.valveposset" ng-show="test" ng-if="points.valveposset"></ma-set-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.valveopentimeset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.valveopentimeset" ng-show="test" ng-if="points.valveopentimeset"></ma-set-point-value>
+                                </div>
+
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.valveclosetimeset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.valveclosetimeset" ng-show="test" ng-if="points.valveclosetimeset"></ma-set-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.kpset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.kpset" ng-show="test" ng-if="points.kpset"></ma-set-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.tnset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.tnset" ng-show="test" ng-if="points.tnset"></ma-set-point-value>
+                                </div>
+                                <div flex="">
+                                    <ma-point-value label="NAME" point="points.tvset" ng-show="!test"></ma-point-value>
+                                    <ma-set-point-value label="NAME" point="points.tvset" ng-show="test" ng-if="points.tvset"></ma-set-point-value>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </div>
+                </md-card>
+            </div>
+        </md-card>
+        <md-card ng-if="points.waterhumalarm">
+            <md-toolbar class="md-hue-3">
+                <div layout="row" layout-align="start start">
+                    <div class="md-toolbar-tools" ng-bind="'Sulu Nemlemdirici Bilgileri'"></div>
+                </div>
+            </md-toolbar>
+            <md-card-content>
+                <div layout="row" layout-align="space-between center">
+                    <div layout="column" flex="">
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.waterhumalarm"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.avghum"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.waterhumvalvepos"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.valveopentimesn"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.valveopentimedk"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.valveclosetimesn"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.valveclosetimedk"></ma-point-value>
+                        </div>
+                    </div>
+
+                    <div layout="column" flex="">
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.pidmax"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.waterhumoff"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.waterhumman"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.waterhumauto"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.selenoidiopen"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.dranejalarm"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.uvlambactive"></ma-point-value>
+                        </div>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+    </md-tab>
+</md-tabs>
+<style>
+    #Bar_supplyfanspeed,
+    #Bar_outfanspeed,
+    #Bar_comp1 {
+        transform-box: fill-box;
+        transform-origin: center;
+        stroke-dasharray: 220;
+        transform: rotate(-90deg);
+        transition: stroke-dashoffset linear 0.3s;
+    }
+
+    #Bar_comp2 {
+        transform-box: fill-box;
+        transform-origin: center;
+        stroke-dasharray: 220;
+        transform: rotate(-90deg);
+        transition: stroke-dashoffset linear 1s;
+    }
+
+    #supplyfanspeed circle:nth-child(3),
+    #outfanspeed circle:nth-child(3),
+    #cwvalvepos circle:nth-child(3) {
+        stroke-width: 2px;
+        opacity: 0.7;
+    }
+
+    .table-value {
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+    /*#returnairarrow {*/
+    /*    animation: moveUp 2s linear 0s infinite;*/
+    /*}*/
+    /*#supplyairarrow {*/
+    /*    animation: moveDown 2s linear 2s infinite;*/
+    /*}*/
+    /*#exhairarrow {*/
+    /*    animation: moveRight 2s linear 2s infinite;*/
+    /*}*/
+    /*#outairarrow {*/
+    /*    animation: moveRight 2s linear 0s infinite;*/
+    /*}*/
+
+    @keyframes moveUp {
+        0% {
+            transform: translate(0, 8);
+            opacity: 0;
+        }
+
+        30% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate(0, -40px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes moveDown {
+        0% {
+            transform: translate(0, -8);
+            opacity: 0;
+        }
+
+        30% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate(0, 40px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes moveRight {
+        0% {
+            transform: translate(-8, 0);
+            opacity: 0;
+        }
+
+        30% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate(40px, -5px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes moveLeft {
+        0% {
+            transform: translate(8, 0);
+            opacity: 0;
+        }
+
+        30% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate(-40px, -5px);
+            opacity: 0;
+        }
+    }
+
+    .flash-on-change {
+        animation: flashonchange 5s linear 5s infinite;
+    }
+
+    #Switch_unitswstatus {
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: all ease 1s;
+    }
+
+    #Switch_unitswstatus.rotate-left {
+        transform: translate(4px, 0) rotate(-110deg);
+    }
+
+    #Switch_unitswstatus.rotate-center {
+        transform: translate(6px, 0) rotate(-60deg);
+    }
+
+    @keyframes flashonchange {
+        0% {
+            fill: rgb(0, 0, 0);
+        }
+
+        30% {
+            fill: rgb(0, 0, 0);
+        }
+
+        40% {
+            fill: rgb(208, 106, 73);
+        }
+
+        60% {
+            fill: rgb(208, 106, 73);
+        }
+
+        70% {
+            fill: rgb(0, 0, 0);
+        }
+
+        100% {
+            fill: rgb(0, 0, 0);
+        }
+    }
+
+    text[id],
+    g[id]:not(.svg-pan-zoom_viewport) text {
+        text-anchor: middle;
+    }
+
+    g[id^="Alarm_"] text,
+    #Rect_waterhumidifier g:last-child text:last-child {
+        text-anchor: unset !important;
+    }
+
+    .ot-throb-opacity {
+        animation: throb-opacity 2s ease-in-out infinite;
+    }
+    
+    g[id^=Fan1_],
+    g[id^=Fan2_] {
+        opacity: 0;
+    }
+    
+    g[id=Fan1_11],
+    g[id=Fan1_21],
+    g[id=Fan2_11],
+    g[id=Fan2_21],
+    g[id=Fan2_31],
+    g[id=Fan2_41] {
+        opacity: 1;
+    }
+    
+    @keyframes fanRotate {
+      0% {
+        opacity: 1;
+      }
+      
+      20% {
+        opacity: 1;
+      }
+      
+      21% {
+        opacity: 0;
+      }
+      
+      100% {
+        opacity: 0;
+      }
+    }
+    
+    @keyframes humWorking {
+      0% {
+        opacity: 1;
+      }
+      
+      14% {
+        opacity: 1;
+      }
+      
+      15% {
+        opacity: 0;
+      }
+      
+      100% {
+        opacity: 0;
+      }
+    }
+    
+    g[id*='damp_'] {
+        opacity: 0;
+    }
+    
+    @keyframes dampOpen {
+      0% {
+        opacity: 1;
+      }
+      
+      10% {
+        opacity: 1;
+      }
+      
+      11% {
+        opacity: 0;
+      }
+      
+      100% {
+        opacity: 0;
+      }
+    }
+    
+    @keyframes dampClose {
+      0% {
+        opacity: 1;
+      }
+      
+      10% {
+        opacity: 1;
+      }
+      
+      11% {
+        opacity: 0;
+      }
+      
+      100% {
+        opacity: 0;
+      }
+    }
+        
+    @keyframes dampShow {
+      0% {
+        opacity: 1;
+      }
+      
+      100% {
+        opacity: 1;
+      }
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* RETURN AIR */
+    .returnairAnim_FC {
+        offset-path: path('M1624.13,846.43c-9.82-197.33-22.32-216.3-101.19-216.08l-1095.68,35.96c-93.44,9.95-95.59,19.22-89.72,292.85');
+        transform-box: fill-box;
+        transform-origin: top;
+        transform: rotate(90deg);
+        -webkit-animation: move 30000ms infinite forwards linear;
+        animation: returnairAnim_FC 30000ms infinite forwards linear;
+    }
+    
+    @keyframes returnairAnim_FC {
+      0% {
+        offset-distance: 0%;
+        opacity: 0;
+      }
+      2% {
+        opacity: 1;
+      }
+      38% {
+        opacity: 1;
+      }
+      40% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0;
+      }
+      52% {
+        opacity: 1;
+      }
+      98% {
+        opacity: 1;
+      }
+      100% {
+        offset-distance: 100%;
+        opacity: 0;
+      }
+    }
+    
+    .returnairAnim_FC line {
+        -webkit-animation: colorChangeStroke 30000ms infinite forwards linear;
+        animation: returnairStroke_FC 30000ms infinite forwards linear;
+    }
+    
+    .returnairAnim_FC polygon {
+        -webkit-animation: colorChangeFill 30000ms infinite forwards linear;
+        animation: returnairFill_FC 30000ms infinite forwards linear;
+    }
+    
+    @keyframes returnairStroke_FC {
+      0% {
+        stroke: #f22534;
+      }
+      40% {
+        stroke: #f22534;
+      }
+      50% {
+        stroke: #32b4eb;
+      }
+      100% {
+        stroke: #32b4eb;
+      }
+    }
+    
+    @keyframes returnairFill_FC {
+      0% {
+        fill: #f22534;
+      }
+      40% {
+        fill: #f22534;
+      }
+      50% {
+        fill: #32b4eb;
+      }
+      100% {
+        fill: #32b4eb;
+      }
+    }
+    
+    .returnairAnim_DX {
+        offset-path: path('M1624.13,846.43c-5.97-186.78-22.32-216.3-101.19-216.08l-84.2,2.76c-29.21,.96-56.26,14.92-74.65,37.63-11.88,14.68-28.85,28.65-43.23,39.17-16.53,12.09-36.29,18.96-56.75,19.82l-435.19,18.29c-22.42,.94-44.29-7.29-60.38-22.93-10.63-10.33-22.04-23.31-30.22-37.68-10.85-19.05-31.58-30.29-53.49-29.57l-257.56,8.45c-93.44,9.95-95.59,19.22-89.72,292.85');
+        transform-box: fill-box;
+        transform-origin: top;
+        transform: rotate(90deg);
+        -webkit-animation: returnairAnim_DX 30000ms infinite forwards linear;
+        animation: returnairAnim_DX 30000ms infinite forwards linear;
+    }
+    
+    @keyframes returnairAnim_DX {
+        0% {
+            offset-distance: 0%;
+            opacity: 0;
+        }
+        2% {
+            opacity: 1;
+        }
+        73% {
+            opacity: 1;
+        }
+        /*74% {*/
+        /*    opacity: 0;*/
+        /*}*/
+        /*78% {*/
+        /*    opacity: 0;*/
+        /*}*/
+        79% {
+            opacity: 1;
+        }
+        98% {
+            opacity: 1;
+        }
+        100% {
+            offset-distance: 100%;
+            opacity: 0;
+        }
+    }
+    
+    .returnairAnim_DX line {
+        -webkit-animation: returnairStroke_DX 30000ms infinite forwards linear;
+        animation: returnairStroke_DX 30000ms infinite forwards linear;
+    }
+    
+    .returnairAnim_DX polygon {
+        -webkit-animation: returnairFill_DX 30000ms infinite forwards linear;
+        animation: returnairFill_DX 30000ms infinite forwards linear;
+    }
+    
+    @keyframes returnairStroke_DX {
+      0% {
+        stroke: #f22534;
+      }
+      74% {
+        stroke: #f22534;
+      }
+      78% {
+        stroke: #32b4eb;
+      }
+      100% {
+        stroke: #32b4eb;
+      }
+    }
+    
+    @keyframes returnairFill_DX {
+      0% {
+        fill: #f22534;
+      }
+      74% {
+        fill: #f22534;
+      }
+      78% {
+        fill: #32b4eb;
+      }
+      100% {
+        fill: #32b4eb;
+      }
+    }
+    
+    .returnairAnim_FCDX_byps {
+        offset-path: path('M1604.57,846.12c-1.24-146.99-2.76-178.1-81.63-177.87l-84.2,2.76c-29.21,.96-50.16,5.81-75.53,23.28-15.56,10.71-30.58,23.7-44.96,34.23-16.53,12.09-36.29,18.96-56.75,19.82l-435.19,18.29c-22.42,.94-44.29-7.29-60.38-22.93-10.63-10.33-14.16-18.85-26.65-29.67-16.76-14.52-32.54-20.03-54.45-19.31l-257.56,8.45c-80.41,11.52-72.64,49.53-68.31,221.52');
+        transform-box: fill-box;
+        transform-origin: top;
+        transform: rotate(90deg);
+        -webkit-animation: returnairAnim_FCDX_byps 30000ms infinite forwards linear;
+        animation: returnairAnim_FCDX_byps 30000ms infinite forwards linear;
+    }
+    
+    @keyframes returnairAnim_FCDX_byps {
+        0% {
+            offset-distance: 0%;
+            opacity: 0;
+        }
+        2% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 1;
+        }
+        /*74% {*/
+        /*    opacity: 0;*/
+        /*}*/
+        /*78% {*/
+        /*    opacity: 0;*/
+        /*}*/
+        86% {
+            opacity: 1;
+        }
+        98% {
+            opacity: 1;
+        }
+        100% {
+            offset-distance: 100%;
+            opacity: 0;
+        }
+    }
+    
+    .returnairAnim_FCDX_byps line {
+        -webkit-animation: returnairStroke_FCDX_byps 30000ms infinite forwards linear;
+        animation: returnairStroke_FCDX_byps 30000ms infinite forwards linear;
+    }
+    
+    .returnairAnim_FCDX_byps polygon {
+        -webkit-animation: returnairFill_FCDX_byps 30000ms infinite forwards linear;
+        animation: returnairFill_FCDX_byps 30000ms infinite forwards linear;
+    }
+    
+    @keyframes returnairStroke_FCDX_byps {
+      0% {
+        stroke: #f22534;
+      }
+      78% {
+        stroke: #f22534;
+      }
+      82% {
+        stroke: #32b4eb;
+      }
+      100% {
+        stroke: #32b4eb;
+      }
+    }
+    
+    @keyframes returnairFill_FCDX_byps {
+      0% {
+        fill: #f22534;
+      }
+      78% {
+        fill: #f22534;
+      }
+      82% {
+        fill: #32b4eb;
+      }
+      100% {
+        fill: #32b4eb;
+      }
+    }
+    
+    .returnairAnim_FCDX_rek {
+        offset-path: path('M1642.81,845.11c2.61-198.9-41-215.57-119.87-215.35l-1095.68,35.96c-93.44,9.95-116.52-18.84-112.29,258.97');
+        transform-box: fill-box;
+        transform-origin: top;
+        transform: rotate(90deg);
+        -webkit-animation: returnairAnim_FCDX_rek 30000ms infinite forwards linear;
+        animation: returnairAnim_FCDX_rek 30000ms infinite forwards linear;
+    }
+    
+    @keyframes returnairAnim_FCDX_rek {
+      0% {
+        offset-distance: 0%;
+        opacity: 0;
+      }
+      2% {
+        opacity: 1;
+      }
+      38% {
+        opacity: 1;
+      }
+      40% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0;
+      }
+      52% {
+        opacity: 1;
+      }
+      98% {
+        opacity: 1;
+      }
+      100% {
+        offset-distance: 100%;
+        opacity: 0;
+      }
+    }
+    
+    .returnairAnim_FCDX_rek line {
+        -webkit-animation: returnairStroke_FCDX 30000ms infinite forwards linear;
+        animation: returnairStroke_FCDX 30000ms infinite forwards linear;
+    }
+    
+    .returnairAnim_FCDX_rek polygon {
+        -webkit-animation: returnairFill_FCDX 30000ms infinite forwards linear;
+        animation: returnairFill_FCDX 30000ms infinite forwards linear;
+    }
+    
+    @keyframes returnairStroke_FCDX {
+      0% {
+        stroke: #f22534;
+      }
+      40% {
+        stroke: #f22534;
+      }
+      50% {
+        stroke: #32b4eb;
+      }
+      100% {
+        stroke: #32b4eb;
+      }
+    }
+    
+    @keyframes returnairFill_FCDX {
+      0% {
+        fill: #f22534;
+      }
+      40% {
+        fill: #f22534;
+      }
+      50% {
+        fill: #32b4eb;
+      }
+      100% {
+        fill: #32b4eb;
+      }
+    }
+    /* END OF RETURN AIR */
+    
+    
+    /* FRESH AIR */
+    .freshairAnim_FC {
+        offset-path: path('M592.8,369.39l216.41-5.51c209.06-6.65,8.91,372.05,240.62,377.43,198.52,4.62,26.95-382.47,186.73-389.8l287.06-7.61');
+        transform-box: fill-box;
+        transform-origin: center;
+        /*transform: rotate(90deg);*/
+        -webkit-animation: move 30000ms infinite forwards linear;
+        animation: freshairAnim_FC 30000ms infinite forwards linear;
+    }
+    
+    @keyframes freshairAnim_FC {
+      0% {
+        offset-distance: 0%;
+        opacity: 0;
+      }
+      2% {
+        opacity: 1;
+      }
+      28% {
+        opacity: 1;
+      }
+      30% {
+        opacity: 0;
+      }
+      66% {
+        opacity: 0;
+      }
+      68% {
+        opacity: 1;
+      }
+      98% {
+        opacity: 1;
+      }
+      100% {
+        offset-distance: 100%;
+        opacity: 0;
+      }
+    }
+    
+    .freshairAnim_FC line {
+        -webkit-animation: freshairStroke_FC 30000ms infinite forwards linear;
+        animation: freshairStroke_FC 30000ms infinite forwards linear;
+    }
+    
+    .freshairAnim_FC polygon {
+        -webkit-animation: freshairFill_FC 30000ms infinite forwards linear;
+        animation: freshairFill_FC 30000ms infinite forwards linear;
+    }
+    @keyframes freshairStroke_FC {
+      0% {
+        stroke: #a7a7bf;
+      }
+      34% {
+        stroke: #a7a7bf;
+      }
+      62% {
+        stroke: #f48c8c;
+      }
+      100% {
+        stroke: #f48c8c;
+      }
+    }
+    @keyframes freshairFill_FC {
+      0% {
+        fill: #a7a7bf;
+      }
+      34% {
+        fill: #a7a7bf;
+      }
+      62% {
+        fill: #f48c8c;
+      }
+      100% {
+        fill: #f48c8c;
+      }
+    }
+    
+    .freshairAnim_DX {
+        offset-path: path('M592.8 369.39 1067.92 355.31 1523.61 343.91');
+        transform-box: fill-box;
+        transform-origin: center;
+        -webkit-animation: move 30000ms infinite forwards linear;
+        animation: freshairAnim_DX 30000ms infinite forwards linear;
+    }
+    
+    @keyframes freshairAnim_DX {
+        0% {
+            offset-distance: 0%;
+            opacity: 0;
+        }
+        2% {
+            opacity: 1;
+        }
+        98% {
+            opacity: 1;
+        }
+        100% {
+            offset-distance: 100%;
+            opacity: 0;
+        }
+    }
+    
+    .freshairAnim_FCDX_byps {
+        offset-path: path('M533.52,333.66s530.31-14.12,534.4-15.84l455.69-11.4');
+        transform-box: fill-box;
+        transform-origin: center;
+        -webkit-animation: freshairAnim_FCDX_byps 20000ms infinite forwards linear;
+        animation: freshairAnim_FCDX_byps 20000ms infinite forwards linear;
+    }
+    
+    @keyframes freshairAnim_FCDX_byps {
+        0% {
+            offset-distance: 0%;
+            opacity: 0;
+        }
+        2% {
+            opacity: 1;
+        }
+        98% {
+            opacity: 1;
+        }
+        100% {
+            offset-distance: 100%;
+            opacity: 0;
+        }
+    }
+    
+    .freshairAnim_FCDX_rek {
+        opacity: 1;
+        offset-path: path('M536.39,411.57l272.82-8.26c209.06-6.65,8.91,328.29,240.62,333.68,198.52,4.62,26.95-338.72,186.73-346.05l287.06-7.61');
+        transform-box: fill-box;
+        transform-origin: center;
+        /*transform: rotate(90deg);*/
+        -webkit-animation: freshairAnim_FCDX_rek 30000ms infinite forwards linear;
+        animation: freshairAnim_FCDX_rek 30000ms infinite forwards linear;
+    }
+    
+    @keyframes freshairAnim_FCDX_rek {
+      0% {
+        offset-distance: 0%;
+        opacity: 0;
+      }
+      2% {
+        opacity: 1;
+      }
+      28% {
+        opacity: 1;
+      }
+      30% {
+        opacity: 0;
+      }
+      70% {
+        opacity: 0;
+      }
+      72% {
+        opacity: 1;
+      }
+      98% {
+        opacity: 1;
+      }
+      100% {
+        offset-distance: 100%;
+        opacity: 0;
+      }
+    }
+    
+    .freshairAnim_FCDX_rek line {
+        -webkit-animation: freshairStroke_FCDX_rek 30000ms infinite forwards linear;
+        animation: freshairStroke_FCDX_rek 30000ms infinite forwards linear;
+    }
+    
+    .freshairAnim_FCDX_rek polygon {
+        -webkit-animation: freshairFill_FCDX_rek 30000ms infinite forwards linear;
+        animation: freshairFill_FCDX_rek 30000ms infinite forwards linear;
+    }
+    @keyframes freshairStroke_FCDX_rek {
+      0% {
+        stroke: #a7a7bf;
+      }
+      34% {
+        stroke: #a7a7bf;
+      }
+      62% {
+        stroke: #f48c8c;
+      }
+      100% {
+        stroke: #f48c8c;
+      }
+    }
+    @keyframes freshairFill_FCDX_rek {
+      0% {
+        fill: #a7a7bf;
+      }
+      34% {
+        fill: #a7a7bf;
+      }
+      62% {
+        fill: #f48c8c;
+      }
+      100% {
+        fill: #f48c8c;
+      }
+    }
+    /* END OF FRESH AIR */
+
+    .d-none {
+        display: none !important;
+    }
+    
+    g[id^=returnAirArrow] > g {
+        opacity: 1;   
+    }
+</style>

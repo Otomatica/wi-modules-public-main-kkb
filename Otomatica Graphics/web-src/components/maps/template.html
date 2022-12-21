@@ -1,0 +1,113 @@
+<style>
+	.leaflet-zoom-animated path:hover {
+		fill: var(--ma-accent);
+	}
+
+	ma-tile-map {
+		background-color: transparent !important;
+		border: 1px dashed var(--ma-accent);
+	}
+</style>
+<div ng-if="!$ctrl.enabled" class="md-toolbar-tools" ma-tr="otomaticaGraphic.graphicDisabled"></div>
+
+<div ng-if="$ctrl.enabled">
+
+	<div ng-if="$ctrl.polygons">
+		<div ng-repeat="polyArea in $ctrl.polyAreas">
+			<!--get poly events-->
+			<wi-active-events hide="true" 
+				ng-if="$ctrl['polyTagValue'+polyArea]"
+				point-query="eq(tags.{{$ctrl.polyTag}},{{$ctrl['polyTagValue'+polyArea]}})" 
+				active-events="$ctrl.activePolyEvents[polyArea]">
+			</wi-active-events>
+
+			<!--get attribute values-->
+			<ma-get-point-value ng-if="$ctrl.selectedRuler"
+				ng-init="permission[$ctrl.selectedRuler.index + polyArea] = false"
+				point-xid="{{$ctrl['attribute' + $ctrl.selectedRuler.index + polyArea]}}" 
+				on-get-point="permission[$ctrl.selectedRuler.index + polyArea] = true" 
+				on-value-updated="permission[$ctrl.selectedRuler.index + polyArea] && $ctrl.updatePolygon(polyArea, null, $ctrl.selectedRuler, point);">
+			</ma-get-point-value>
+
+		</div>
+	</div>
+
+	<div layout="column" layout-gt-md="row" layout-gt-lg="row" flex="noshrink">
+
+		<ma-tile-map flex="noshrink"
+			ng-style="{'height': $root.fullScreen ? 'calc(100vh - 227px)': 'calc(100vh - 297px)'}"
+			automatic-tile-layers="false" 
+			center="$ctrl.mapOptions.center" 
+			zoom="$ctrl.mapOptions.zoom"
+			options="$ctrl.mapOptions.options">
+
+			<wi-tile-map-ruler 
+				on-change="$ctrl.resetPolygon($model)"
+				options="$ctrl.attributes"
+				model="$ctrl.selectedRuler"
+				position="bottomright">
+			</wi-tile-map-ruler>
+
+			<wi-tile-map-geojson refresh="$ctrl.polygonRefresh" data="$ctrl.polygons" on-each-feature="$ctrl.onEachFeature"></wi-tile-map-geojson>
+
+			<div ng-repeat="polyArea in $ctrl.polyAreas" ng-if="page.showIcons">
+				<wi-tile-map-shape ng-repeat="systemIndex in [] | maRange: 0 : $ctrl.systemCount-1 : 1" 
+					ng-if="$ctrl['system'+systemIndex+'query'] && $ctrl['polyTagValue'+polyArea]"
+					config="{
+						type: 'marker',
+						icon: $ctrl['system'+systemIndex+'icon'],
+						latlng: $ctrl['system'+polyArea+systemIndex+'coordinate'] || $ctrl.coordinates[polyArea][systemIndex],
+						displayType: 'events',
+						data: {
+							eventType: 'rql',
+							eventData: {
+								title: polyArea + ' - ' + $ctrl['system'+systemIndex+'title'],
+								rql: 'eq(tags.' + $ctrl.polyTag + ',' + $ctrl['polyTagValue'+polyArea] + ')&' + $ctrl['system'+systemIndex+'query']
+							}
+						}
+					}">
+				</wi-tile-map-shape>
+			</div>
+			
+		</ma-tile-map>
+		<div>
+			<span layout layout-align="end">
+				<md-switch style="margin: 0;" class="wi-switch-label" ng-model="page.showIcons" ma-tr="otomaticaGraphic.maps.showIcons"></md-switch>
+			</span>
+			<table flex md-table ng-style="{ 
+					'max-width' : $ctrl.$mdMedia('gt-md') ? '350px' : '100%',
+					'min-width' : $ctrl.$mdMedia('gt-md') ? '350px' : '100%' 
+				}" >
+		        <thead md-head><!-- TODO order -->
+		        <tr md-row>
+		            <th md-column ma-tr="otomaticaGraphic.maps.campus"></th>
+		            <th md-column ma-tr="ui.app.events" class="ma-narrow-column"></th>
+		            <th md-column md-numeric ma-tr="otomaticaGraphic.maps.outsideTemp"></th>
+		        </tr>
+		        </thead>
+		        <tbody md-body>
+		        <tr md-row md-select="campus" md-select-id="id" md-auto-select="false" ng-repeat="campus in $ctrl.campuses">
+		            <td md-cell style="white-space: nowrap;">
+		            	<a class="wi-no-underline" ng-bind="campus.name" ng-click="$root.navigate($ctrl.campusTag, campus.name)"></a>
+		            </td>
+		            <td md-cell class="ma-narrow-column">
+		            	<wi-active-events ng-if="campus.name" popup-title="campus.name" point-query="eq(tags.{{$ctrl.campusTag}},{{campus.name}})">
+		            	</wi-active-events>
+		            </td>
+		            <td md-cell>
+		            	<ma-point-value ng-if="$ctrl['campus'+campus.key+'Temp']"
+		            		style="cursor: pointer;" 
+		            		class="wi-fix-fab"
+		            		point-xid="{{$ctrl['campus'+campus.key+'Temp']}}"
+		            		on-value-updated="campus.name = $point.tags[$ctrl.campusTag]"
+		            		enable-popup="left"
+		            		hide-event-indicator="true"
+		            		flash-on-change="true">
+		            	</ma-point-value>
+		            </td>
+		        </tr>
+		        </tbody>
+		    </table>
+		</div>
+	</div>
+</div>
