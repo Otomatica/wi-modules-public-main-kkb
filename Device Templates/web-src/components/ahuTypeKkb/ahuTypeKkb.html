@@ -272,14 +272,14 @@
 				        <div ma-selector="#PathReturnAir_modeFC" class="d-none"></div>
 				        <div ma-selector="#PathFreshAir_modeDX" class="d-none"></div>
 				        <div ma-selector="#PathFreshAir_modeFC" class="d-none"></div>
-				        <div ma-selector="#PathReturnAir_modeFCDX_byps" class="d-none"></div>
-				        <div ma-selector="#PathReturnAir_modeFCDX_rek" class="d-none"></div>
 				        <div ma-selector="#PathFreshAir_modeFCDX_byps" class="d-none"></div>
 				        <div ma-selector="#PathFreshAir_modeFCDX_rek" class="d-none"></div>
-				        
-				        <div ma-selector="#TransitionArrow_returnAir" ng-if="(points.unitmode.value == 1 || points.unitmode.value == 2)"></div>
-				        <div ma-selector="#TransitionArrow_returnAir_FCDX" ng-if="false"></div>
-				        <div ma-selector="#TransitionArrow_freshAir" ng-if="(points.unitmode.value == 1 || points.unitmode.value == 2)"></div>
+				        <div ma-selector="#PathReturnAir_modeFCDX_byps" class="d-none"></div>
+				        <div ma-selector="#PathReturnAir_modeFCDX_rek" class="d-none"></div>
+				
+				        <div ma-selector="#TransitionArrow_returnAir" ng-if="points.unitmode.value == 1"></div>
+				        <div ma-selector="#TransitionArrow_returnAir_FCDX" ng-if="points.unitmode.value == 2"></div>
+				        <div ma-selector="#TransitionArrow_freshAir" ng-if="(points.unitmode.value == 1 || points.unitmode.value == 2) && points.outfanspeed.value"></div>
 				        
 				        <div ma-selector="#Blades_evapon" ng-if="(points.unitmode.value == 2 || points.unitmode.value == 3)"></div>
 				        <div ma-selector="#Blades_evapoff" ng-if="!(points.unitmode.value == 2 || points.unitmode.value == 3)"></div>
@@ -287,72 +287,28 @@
 				        <div ma-selector="#Blades_kondenseron" ng-if="(points.unitmode.value == 2 || points.unitmode.value == 3)"></div>
 				        <div ma-selector="#Blades_kondenseroff" ng-if="!(points.unitmode.value == 2 || points.unitmode.value == 3)"></div>
 				        
-				        <div ma-selector="#returnAirArrow01" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#returnAirArrow02" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#returnAirArrow03" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#returnAirArrow04" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#returnAirArrow05" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#returnAirArrow06" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#returnAirArrow07" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#returnAirArrow08" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#returnAirArrow09" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#returnAirArrow10" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow01" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow02" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow03" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow04" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow05" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow06" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow07" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow08" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow09" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#returnAirArrow10" ng-class="points.unitmode.value == 1 ? 'returnairAnim_FC' : points.unitmode.value == 2 ? 'returnairAnim_FCDX' : points.unitmode.value == 3 ? 'returnairAnim_DX' : 'd-none'"></div>
 				        
-				        <div ma-selector="#returnAirArrow01 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        <div ma-selector="#returnAirArrow02 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        <div ma-selector="#returnAirArrow03 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        <div ma-selector="#returnAirArrow04 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        <div ma-selector="#returnAirArrow05 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        <div ma-selector="#returnAirArrow06 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        <div ma-selector="#returnAirArrow07 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        <div ma-selector="#returnAirArrow08 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        <div ma-selector="#returnAirArrow09 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        <div ma-selector="#returnAirArrow10 > g:first-child" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_byps' : ''"></div>
-				        
-				        <div ma-selector="#returnAirArrow01 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#returnAirArrow02 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#returnAirArrow03 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#returnAirArrow04 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#returnAirArrow05 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#returnAirArrow06 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#returnAirArrow07 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#returnAirArrow08 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#returnAirArrow09 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#returnAirArrow10 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'returnairAnim_FCDX_rek' : ''"></div>
-				        
-				        <div ma-selector="#freshAirArrow01" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#freshAirArrow02" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
-				        <div ma-selector="#freshAirArrow03" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#freshAirArrow04" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
-				        <div ma-selector="#freshAirArrow05" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#freshAirArrow06" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
-				        <div ma-selector="#freshAirArrow07" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#freshAirArrow08" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
-				        <div ma-selector="#freshAirArrow09" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
-				        <div ma-selector="#freshAirArrow10" ng-class="points.unitmode.value == 1 ? 'freshairAnim_FC' : points.unitmode.value == 2 ? '' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
-				        
-				        <div ma-selector="#freshAirArrow01 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#freshAirArrow02 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#freshAirArrow03 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#freshAirArrow04 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#freshAirArrow05 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#freshAirArrow06 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#freshAirArrow07 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#freshAirArrow08 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#freshAirArrow09 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        <div ma-selector="#freshAirArrow10 > g:first-child" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_rek' : ''"></div>
-				        
-				        <div ma-selector="#freshAirArrow01 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: 0s"></div>
-				        <div ma-selector="#freshAirArrow02 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -2s"></div>
-				        <div ma-selector="#freshAirArrow03 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: -4s"></div>
-				        <div ma-selector="#freshAirArrow04 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -6s"></div>
-				        <div ma-selector="#freshAirArrow05 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: -8s"></div>
-				        <div ma-selector="#freshAirArrow06 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -10s"></div>
-				        <div ma-selector="#freshAirArrow07 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: -12s"></div>
-				        <div ma-selector="#freshAirArrow08 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -14s"></div>
-				        <div ma-selector="#freshAirArrow09 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'freshairAnim_FCDX_byps' : ''" style="animation-delay: -16s"></div>
-				        <div ma-selector="#freshAirArrow10 > g:nth-child(2)" ng-class="points.unitmode.value == 2 ? 'd-none' : ''" style="animation-delay: -18s"></div>
-				        
+				        <div ma-selector="#freshAirArrow01" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow02" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow03" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow04" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow05" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow06" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow07" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow08" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow09" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'freshairAnim_DX' : 'd-none'"></div>
+				        <div ma-selector="#freshAirArrow10" ng-class="(points.unitmode.value == 1 || points.unitmode.value == 2) ? 'freshairAnim_FC' : points.unitmode.value == 3 ? 'd-none' : 'd-none'"></div>
+				
 				        <div ma-selector="#freshAirArrow01, #freshAirArrow01 line, #freshAirArrow01 polygon, #freshAirArrow01 > g:first-child, #returnAirArrow01, #returnAirArrow01 line, #returnAirArrow01 polygon, #returnAirArrow01 > g:first-child, #returnAirArrow01 > g:nth-child(2)" style="animation-delay: 0s"></div>
 				        <div ma-selector="#freshAirArrow02, #freshAirArrow02 line, #freshAirArrow02 polygon, #freshAirArrow02 > g:first-child, #returnAirArrow02, #returnAirArrow02 line, #returnAirArrow02 polygon, #returnAirArrow02 > g:first-child, #returnAirArrow02 > g:nth-child(2)" style="animation-delay: -3s"></div>
 				        <div ma-selector="#freshAirArrow03, #freshAirArrow03 line, #freshAirArrow03 polygon, #freshAirArrow03 > g:first-child, #returnAirArrow03, #returnAirArrow03 line, #returnAirArrow03 polygon, #returnAirArrow03 > g:first-child, #returnAirArrow03 > g:nth-child(2)" style="animation-delay: -6s"></div>
@@ -467,66 +423,92 @@
     <md-tab label="Nemlendirici Detaylari" ng-if="points.hummode||points.waterhumoff">
     	
     	<!-- Elektrikli Nemlendirici -->
-        <md-card ng-if="points.hummode">
-            <md-toolbar class="md-hue-3">
-                <div layout="row" layout-align="start start">
-                    <div class="md-toolbar-tools" ng-bind="'Elektrikli Nemlemdirici Set'"></div>
-                    <div>
-                        <button class="md-icon-button md-button" ng-click="test=!test" type="button">
-                            <md-icon class="material-icons" role="img" aria-hidden="true">edit</md-icon>
-                        </button>
-                    </div>
-                </div>
-            </md-toolbar>
-
-            <div layout="row" layout-align="space-between center">
-                <md-card flex="">
-                    <div layout="column" layout-align="space-between start">
-                        <md-card-content>
-                            <div layout="column" layout-align="space-between start">
-                                <div flex="">
-                                    <ma-point-value label="NAME" point="points.statusset" ng-show="!test"></ma-point-value>
-                                    <ma-set-point-value label="NAME" point="points.statusset" ng-show="test" ng-if="points.statusset"></ma-set-point-value>
-                                </div>
+    	<div layout="column">
+	    	<div layout="row">
+		        <md-card flex="" ng-if="points.hummode">
+		            <md-toolbar class="md-hue-3">
+		                <div layout="row" layout-align="start start">
+		                    <div class="md-toolbar-tools" ng-bind="'Nemlemdirici Durum'"></div>
+		                </div>
+		            </md-toolbar>
+		
+					<md-card-content>
+		            	<div layout="column" layout-align="start start">
+		            		<div flex="">
+		                        <ma-point-value label="NAME" point="points.hummode"></ma-point-value>
+		                    </div>
+		                    <div flex="">
+		                        <ma-point-value label="NAME" point="points.humpercent"></ma-point-value>
+		                    </div>
+			             	<div flex="" ng-show="points.humstatus">
+			                     <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+			                         point="points.humstatus" />
+			                     </ma-point-value>
+			                 </div>
+			                 <div flex="">
+	                            <ma-point-value label="NAME" point="points.avghum"></ma-point-value>
+	                        </div>
+		                </div>
+		            </md-card-content>
+		        </md-card>
+		        
+		        <md-card flex="" ng-if="points.hummode">
+		            <md-toolbar class="md-hue-3">
+		                <div layout="row" layout-align="start start">
+		                    <div class="md-toolbar-tools" ng-bind="'Set Noktalari'"></div>
+		                    <div>
+	                            <md-button class="md-icon-button md-primary" ng-click="test=true" ng-show="!test" aria-label="Setleme">
+									<md-icon class="material-icons" role="img" aria-hidden="true">edit</md-icon>
+								</md-button>
+								<md-button class="md-icon-button md-warn" ng-click="test=false" ng-show="test" aria-label="Setleme">
+									<md-icon class="material-icons" role="img" aria-hidden="true">edit_off</md-icon>
+								</md-button>
+	                        </div>
+		                </div>
+		            </md-toolbar>
+		
+					<md-card-content>
+		            	<div layout="column" layout-align="start start">
+		            		<div layout="column" layout-align="space-between start">
+                                <ma-point-value label="NAME" point="points.humset" ng-show="!test">
+                                </ma-point-value>
+                                <ma-set-point-value label="NAME" point="points.humset" ng-show="test">
+                                </ma-set-point-value>
                             </div>
-                        </md-card-content>
-                    </div>
-                </md-card>
-            </div>
-        </md-card>
+		            		<div flex="">
+			                     <md-button ng-click="points.statusset.setValue(0)" class="md-raised"
+			                         ng-class="points.humstatus.value == 1 ? 'success-button' : ''"
+			                         ng-disabled="points.humstatus.value == 1">
+			                         <md-icon class="material-icons" style="margin-right: 5px" role="img" aria-hidden="true">
+			                             power_settings_new</md-icon>{{points.humstatus.value == 1 ? "Acik" : "Ac"}}
+			                     </md-button>
+			                     <md-button ng-click="points.statusset.setValue(1)" class="md-raised"
+			                         ng-class="points.humstatus.value == 0 ? 'muted-button' : ''"
+			                         ng-disabled="points.humstatus.value == 0">
+			                         <md-icon class="material-icons" style="margin-right: 5px" role="img" aria-hidden="true">
+			                             power_off</md-icon>{{points.humstatus.value == 0 ? "Kapali" :
+			                         "Kapat"}}
+			                     </md-button>
+			                 </div>
+		            		
+		                </div>
+		            </md-card-content>
+		        </md-card>
+		        
+		    </div>
+	    </div>
 
         <md-card ng-if="points.hummode">
             <md-toolbar class="md-hue-3">
                 <div layout="row" layout-align="start start">
-                    <div class="md-toolbar-tools" ng-bind="'Elektrikli Nemlemdirici Bilgileri'"></div>
+                    <div class="md-toolbar-tools" ng-bind="'Nemlemdirici Detay Bilgileri'"></div>
                 </div>
             </md-toolbar>
 
             <md-card-content>
                 <div layout="row" layout-align="space-between">
                     <div layout="column" flex="">
-                        <div flex="">
-                            <ma-point-value label="NAME" point="points.humstatus"></ma-point-value>
-                        </div>
-                        <div flex="">
-                            <ma-point-value label="NAME" point="points.humalarm"></ma-point-value>
-                        </div>
-                        <div flex="">
-                            <ma-point-value label="NAME" point="points.hummode"></ma-point-value>
-                        </div>
-                        <div flex="">
-                            <ma-point-value label="NAME" point="points.worktime"></ma-point-value>
-                        </div>
-                        <div flex="">
-                            <ma-point-value label="NAME" point="points.avghum"></ma-point-value>
-                        </div>
-                    </div>
-
-                    <div layout="column" flex="">
-                        <div flex="">
-                            <ma-point-value label="NAME" point="points.cylinder1worktime"></ma-point-value>
-                        </div>
-                        <div flex="">
+                    	<div flex="">
                             <ma-point-value label="NAME" point="points.conductivity"></ma-point-value>
                         </div>
                         <div flex="">
@@ -534,6 +516,18 @@
                         </div>
                         <div flex="">
                             <ma-point-value label="NAME" point="points.steamgen"></ma-point-value>
+                        </div>
+                    </div>
+
+                    <div layout="column" flex="">
+                    	<div flex="">
+                            <ma-point-value label="NAME" point="points.worktime"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.cylinder1worktime"></ma-point-value>
+                        </div>
+                        <div flex="">
+                            <ma-point-value label="NAME" point="points.humalarm"></ma-point-value>
                         </div>
                     </div>
                 </div>
@@ -695,131 +689,6 @@
         font-weight: 500;
     }
 
-    /*#returnairarrow {*/
-    /*    animation: moveUp 2s linear 0s infinite;*/
-    /*}*/
-    /*#supplyairarrow {*/
-    /*    animation: moveDown 2s linear 2s infinite;*/
-    /*}*/
-    /*#exhairarrow {*/
-    /*    animation: moveRight 2s linear 2s infinite;*/
-    /*}*/
-    /*#outairarrow {*/
-    /*    animation: moveRight 2s linear 0s infinite;*/
-    /*}*/
-
-    @keyframes moveUp {
-        0% {
-            transform: translate(0, 8);
-            opacity: 0;
-        }
-
-        30% {
-            transform: translate(0, 0);
-            opacity: 1;
-        }
-
-        100% {
-            transform: translate(0, -40px);
-            opacity: 0;
-        }
-    }
-
-    @keyframes moveDown {
-        0% {
-            transform: translate(0, -8);
-            opacity: 0;
-        }
-
-        30% {
-            transform: translate(0, 0);
-            opacity: 1;
-        }
-
-        100% {
-            transform: translate(0, 40px);
-            opacity: 0;
-        }
-    }
-
-    @keyframes moveRight {
-        0% {
-            transform: translate(-8, 0);
-            opacity: 0;
-        }
-
-        30% {
-            transform: translate(0, 0);
-            opacity: 1;
-        }
-
-        100% {
-            transform: translate(40px, -5px);
-            opacity: 0;
-        }
-    }
-
-    @keyframes moveLeft {
-        0% {
-            transform: translate(8, 0);
-            opacity: 0;
-        }
-
-        30% {
-            transform: translate(0, 0);
-            opacity: 1;
-        }
-
-        100% {
-            transform: translate(-40px, -5px);
-            opacity: 0;
-        }
-    }
-
-    .flash-on-change {
-        animation: flashonchange 5s linear 5s infinite;
-    }
-
-    #Switch_unitswstatus {
-        transform-box: fill-box;
-        transform-origin: center;
-        transition: all ease 1s;
-    }
-
-    #Switch_unitswstatus.rotate-left {
-        transform: translate(4px, 0) rotate(-110deg);
-    }
-
-    #Switch_unitswstatus.rotate-center {
-        transform: translate(6px, 0) rotate(-60deg);
-    }
-
-    @keyframes flashonchange {
-        0% {
-            fill: rgb(0, 0, 0);
-        }
-
-        30% {
-            fill: rgb(0, 0, 0);
-        }
-
-        40% {
-            fill: rgb(208, 106, 73);
-        }
-
-        60% {
-            fill: rgb(208, 106, 73);
-        }
-
-        70% {
-            fill: rgb(0, 0, 0);
-        }
-
-        100% {
-            fill: rgb(0, 0, 0);
-        }
-    }
-
     text[id],
     g[id]:not(.svg-pan-zoom_viewport) text {
         text-anchor: middle;
@@ -944,7 +813,7 @@
         transform-box: fill-box;
         transform-origin: top;
         transform: rotate(90deg);
-        -webkit-animation: move 30000ms infinite forwards linear;
+        -webkit-animation: returnairAnim_FC 30000ms infinite forwards linear;
         animation: returnairAnim_FC 30000ms infinite forwards linear;
     }
     
@@ -989,31 +858,31 @@
     
     @keyframes returnairStroke_FC {
       0% {
-        stroke: #f22534;
+        stroke: #FF0800;
       }
       40% {
-        stroke: #f22534;
+        stroke: #FF0800;
       }
       50% {
-        stroke: #32b4eb;
+        stroke: #0f6df1;
       }
       100% {
-        stroke: #32b4eb;
+        stroke: #0f6df1;
       }
     }
     
     @keyframes returnairFill_FC {
       0% {
-        fill: #f22534;
+        fill: #FF0800;
       }
       40% {
-        fill: #f22534;
+        fill: #FF0800;
       }
       50% {
-        fill: #32b4eb;
+        fill: #0f6df1;
       }
       100% {
-        fill: #32b4eb;
+        fill: #0f6df1;
       }
     }
     
@@ -1037,12 +906,6 @@
         73% {
             opacity: 1;
         }
-        /*74% {*/
-        /*    opacity: 0;*/
-        /*}*/
-        /*78% {*/
-        /*    opacity: 0;*/
-        /*}*/
         79% {
             opacity: 1;
         }
@@ -1067,122 +930,44 @@
     
     @keyframes returnairStroke_DX {
       0% {
-        stroke: #f22534;
+        stroke: #FF0800;
       }
       74% {
-        stroke: #f22534;
+        stroke: #FF0800;
       }
       78% {
-        stroke: #32b4eb;
+        stroke: #0f6df1;
       }
       100% {
-        stroke: #32b4eb;
+        stroke: #0f6df1;
       }
     }
     
     @keyframes returnairFill_DX {
       0% {
-        fill: #f22534;
+        fill: #FF0800;
       }
       74% {
-        fill: #f22534;
+        fill: #FF0800;
       }
       78% {
-        fill: #32b4eb;
+        fill: #0f6df1;
       }
       100% {
-        fill: #32b4eb;
+        fill: #0f6df1;
       }
     }
-    
-    .returnairAnim_FCDX_byps {
-        offset-path: path('M1604.57,846.12c-1.24-146.99-2.76-178.1-81.63-177.87l-84.2,2.76c-29.21,.96-50.16,5.81-75.53,23.28-15.56,10.71-30.58,23.7-44.96,34.23-16.53,12.09-36.29,18.96-56.75,19.82l-435.19,18.29c-22.42,.94-44.29-7.29-60.38-22.93-10.63-10.33-14.16-18.85-26.65-29.67-16.76-14.52-32.54-20.03-54.45-19.31l-257.56,8.45c-80.41,11.52-72.64,49.53-68.31,221.52');
+
+    .returnairAnim_FCDX {
+        offset-path: path('M1624.13,846.43c-9.82-197.33-22.32-216.3-101.19-216.08l-1095.68,35.96c-93.44,9.95-95.59,19.22-89.72,292.85');
         transform-box: fill-box;
         transform-origin: top;
         transform: rotate(90deg);
-        -webkit-animation: returnairAnim_FCDX_byps 30000ms infinite forwards linear;
-        animation: returnairAnim_FCDX_byps 30000ms infinite forwards linear;
+        -webkit-animation: returnairAnim_FCDX 30000ms infinite forwards linear;
+        animation: returnairAnim_FCDX 30000ms infinite forwards linear;
     }
     
-    @keyframes returnairAnim_FCDX_byps {
-        0% {
-            offset-distance: 0%;
-            opacity: 0;
-        }
-        2% {
-            opacity: 1;
-        }
-        80% {
-            opacity: 1;
-        }
-        /*74% {*/
-        /*    opacity: 0;*/
-        /*}*/
-        /*78% {*/
-        /*    opacity: 0;*/
-        /*}*/
-        86% {
-            opacity: 1;
-        }
-        98% {
-            opacity: 1;
-        }
-        100% {
-            offset-distance: 100%;
-            opacity: 0;
-        }
-    }
-    
-    .returnairAnim_FCDX_byps line {
-        -webkit-animation: returnairStroke_FCDX_byps 30000ms infinite forwards linear;
-        animation: returnairStroke_FCDX_byps 30000ms infinite forwards linear;
-    }
-    
-    .returnairAnim_FCDX_byps polygon {
-        -webkit-animation: returnairFill_FCDX_byps 30000ms infinite forwards linear;
-        animation: returnairFill_FCDX_byps 30000ms infinite forwards linear;
-    }
-    
-    @keyframes returnairStroke_FCDX_byps {
-      0% {
-        stroke: #f22534;
-      }
-      78% {
-        stroke: #f22534;
-      }
-      82% {
-        stroke: #32b4eb;
-      }
-      100% {
-        stroke: #32b4eb;
-      }
-    }
-    
-    @keyframes returnairFill_FCDX_byps {
-      0% {
-        fill: #f22534;
-      }
-      78% {
-        fill: #f22534;
-      }
-      82% {
-        fill: #32b4eb;
-      }
-      100% {
-        fill: #32b4eb;
-      }
-    }
-    
-    .returnairAnim_FCDX_rek {
-        offset-path: path('M1642.81,845.11c2.61-198.9-41-215.57-119.87-215.35l-1095.68,35.96c-93.44,9.95-116.52-18.84-112.29,258.97');
-        transform-box: fill-box;
-        transform-origin: top;
-        transform: rotate(90deg);
-        -webkit-animation: returnairAnim_FCDX_rek 30000ms infinite forwards linear;
-        animation: returnairAnim_FCDX_rek 30000ms infinite forwards linear;
-    }
-    
-    @keyframes returnairAnim_FCDX_rek {
+    @keyframes returnairAnim_FCDX {
       0% {
         offset-distance: 0%;
         opacity: 0;
@@ -1211,43 +996,55 @@
       }
     }
     
-    .returnairAnim_FCDX_rek line {
-        -webkit-animation: returnairStroke_FCDX 30000ms infinite forwards linear;
+    .returnairAnim_FCDX line {
+        -webkit-animation: colorChangeStroke 30000ms infinite forwards linear;
         animation: returnairStroke_FCDX 30000ms infinite forwards linear;
     }
     
-    .returnairAnim_FCDX_rek polygon {
-        -webkit-animation: returnairFill_FCDX 30000ms infinite forwards linear;
+    .returnairAnim_FCDX polygon {
+        -webkit-animation: colorChangeFill 30000ms infinite forwards linear;
         animation: returnairFill_FCDX 30000ms infinite forwards linear;
     }
     
     @keyframes returnairStroke_FCDX {
       0% {
-        stroke: #f22534;
+        stroke: #FF0800;
       }
       40% {
-        stroke: #f22534;
+        stroke: #FF0800;
       }
       50% {
-        stroke: #32b4eb;
+        stroke: #dab0e2;
+      }
+      74% {
+        stroke: #dab0e2;
+      }
+      78% {
+        stroke: #0f6df1;
       }
       100% {
-        stroke: #32b4eb;
+        stroke: #0f6df1;
       }
     }
     
     @keyframes returnairFill_FCDX {
       0% {
-        fill: #f22534;
+        fill: #FF0800;
       }
       40% {
-        fill: #f22534;
+        fill: #FF0800;
       }
       50% {
-        fill: #32b4eb;
+        fill: #dab0e2; 
+      }
+      74% {
+        fill: #dab0e2;
+      }
+      78% {
+        fill: #0f6df1;
       }
       100% {
-        fill: #32b4eb;
+        fill: #0f6df1;
       }
     }
     /* END OF RETURN AIR */
@@ -1354,114 +1151,12 @@
             opacity: 0;
         }
     }
-    
-    .freshairAnim_FCDX_byps {
-        offset-path: path('M533.52,333.66s530.31-14.12,534.4-15.84l455.69-11.4');
-        transform-box: fill-box;
-        transform-origin: center;
-        -webkit-animation: freshairAnim_FCDX_byps 20000ms infinite forwards linear;
-        animation: freshairAnim_FCDX_byps 20000ms infinite forwards linear;
-    }
-    
-    @keyframes freshairAnim_FCDX_byps {
-        0% {
-            offset-distance: 0%;
-            opacity: 0;
-        }
-        2% {
-            opacity: 1;
-        }
-        98% {
-            opacity: 1;
-        }
-        100% {
-            offset-distance: 100%;
-            opacity: 0;
-        }
-    }
-    
-    .freshairAnim_FCDX_rek {
-        opacity: 1;
-        offset-path: path('M536.39,411.57l272.82-8.26c209.06-6.65,8.91,328.29,240.62,333.68,198.52,4.62,26.95-338.72,186.73-346.05l287.06-7.61');
-        transform-box: fill-box;
-        transform-origin: center;
-        /*transform: rotate(90deg);*/
-        -webkit-animation: freshairAnim_FCDX_rek 30000ms infinite forwards linear;
-        animation: freshairAnim_FCDX_rek 30000ms infinite forwards linear;
-    }
-    
-    @keyframes freshairAnim_FCDX_rek {
-      0% {
-        offset-distance: 0%;
-        opacity: 0;
-      }
-      2% {
-        opacity: 1;
-      }
-      28% {
-        opacity: 1;
-      }
-      30% {
-        opacity: 0;
-      }
-      70% {
-        opacity: 0;
-      }
-      72% {
-        opacity: 1;
-      }
-      98% {
-        opacity: 1;
-      }
-      100% {
-        offset-distance: 100%;
-        opacity: 0;
-      }
-    }
-    
-    .freshairAnim_FCDX_rek line {
-        -webkit-animation: freshairStroke_FCDX_rek 30000ms infinite forwards linear;
-        animation: freshairStroke_FCDX_rek 30000ms infinite forwards linear;
-    }
-    
-    .freshairAnim_FCDX_rek polygon {
-        -webkit-animation: freshairFill_FCDX_rek 30000ms infinite forwards linear;
-        animation: freshairFill_FCDX_rek 30000ms infinite forwards linear;
-    }
-    @keyframes freshairStroke_FCDX_rek {
-      0% {
-        stroke: #a7a7bf;
-      }
-      34% {
-        stroke: #a7a7bf;
-      }
-      62% {
-        stroke: #f48c8c;
-      }
-      100% {
-        stroke: #f48c8c;
-      }
-    }
-    @keyframes freshairFill_FCDX_rek {
-      0% {
-        fill: #a7a7bf;
-      }
-      34% {
-        fill: #a7a7bf;
-      }
-      62% {
-        fill: #f48c8c;
-      }
-      100% {
-        fill: #f48c8c;
-      }
-    }
     /* END OF FRESH AIR */
 
     .d-none {
         display: none !important;
     }
-    
+
     g[id^=returnAirArrow] > g {
         opacity: 1;   
     }

@@ -1,0 +1,87 @@
+<ma-get-point-value ng-repeat="(key, value) in points" point="value"></ma-get-point-value>
+
+<div layout="column">
+        <div layout="row">
+            <md-card flex="">
+                <div layout="column">
+                    <md-toolbar class="md-hue-3">
+                        <div layout="row" layout-align="start start">
+                            <div class="md-toolbar-tools" ng-bind="'Ruzgar Yonu'"></div>
+                        </div>
+                    </md-toolbar>
+                    <md-card-content>
+                    	<div layout="column" layout-align="start start">
+    	                	<ma-svg ng-include="$ctrl.diagram">
+                                <div ma-selector="#Device_pointer" ng-style="{'transform' : 'rotate(' + points.winddir.value + 'deg)'}"></div>
+                                <div ma-selector="#Shadow2_pointer" ng-style="{'transform' : 'rotate(' + points.winddir.value + 'deg)'}"></div>
+                            </ma-svg>
+                        </div>
+                    </md-card-content>
+                </div>
+            </md-card>
+            <md-card flex="">
+                <div layout="column">
+                    <md-toolbar class="md-hue-3">
+                        <div layout="row" layout-align="start start">
+                            <div class="md-toolbar-tools" ng-bind="'Detay Bilgileri'"></div>
+                        </div>
+                    </md-toolbar>
+                    <md-card-content>
+                        <div layout="column" layout-align="start start">
+    
+                            <div flex="" ng-show="points.temp">
+                                <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                    point="points.temp" />
+                                </ma-point-value>
+                            </div>
+    
+                            <div flex="" ng-show="points.hum">
+                                <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                    point="points.hum" />
+                                </ma-point-value>
+                            </div>
+                            
+                            <div flex="" ng-show="points.outairpressure">
+                                <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                    point="points.outairpressure" />
+                                </ma-point-value>
+                            </div>
+                            
+                            <div flex="" ng-show="points.outairenthalpy">
+                                <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                    point="points.outairenthalpy" />
+                                </ma-point-value>
+                            </div>
+                            
+                            <div flex="" ng-show="points.windspeed">
+                                <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                    point="points.windspeed" />
+                                </ma-point-value>
+                            </div>
+                            
+                            <div flex="" ng-show="points.winddir">
+                                <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                    point="points.winddir" />
+                                </ma-point-value>
+                            </div>
+                            <div flex="" ng-show="points.precipintensity">
+                                <ma-point-value enable-popup="right" label="NAME" flash-on-change="true"
+                                    point="points.precipintensity" />
+                                </ma-point-value>
+                            </div>
+    
+                        </div>
+                    </md-card-content>
+                </div>
+            </md-card>
+        </div>
+    </div>
+
+<style>
+    #Device_pointer,
+    #Shadow2_pointer{
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: all ease 0.5s;
+    }
+</style>

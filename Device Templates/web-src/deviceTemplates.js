@@ -9,6 +9,7 @@ import otFahuTypeKkb from './components/fahuTypeKkb/fahuTypeKkb';
 import otVrfTypeKkb from './components/vrfTypeKkb/vrfTypeKkb';
 import otVrfTypeKkb2 from './components/vrfTypeKkb2/vrfTypeKkb2';
 import otVrfTypeKkb3 from './components/vrfTypeKkb3/vrfTypeKkb3';
+import meteorologyTypeKkb from './components/meteorologyTypeKkb/meteorologyTypeKkb';
 
 import './deviceTemplates.css';
 
@@ -25,6 +26,7 @@ deviceTemplatesModule
 	.directive('otVrfTypeKkb', otVrfTypeKkb)
 	.directive('otVrfTypeKkb2', otVrfTypeKkb2)
 	.directive('otVrfTypeKkb3', otVrfTypeKkb3)
+	.directive('meteorologyTypeKkb', meteorologyTypeKkb)
 	
     .config(['$injector', function($injector) {
         
